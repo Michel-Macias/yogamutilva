@@ -37,11 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
             cursor.classList.add('cursor-hover');
-            cursorDot.classList.add('dot-hover');
         });
         el.addEventListener('mouseleave', () => {
             cursor.classList.remove('cursor-hover');
-            cursorDot.classList.remove('dot-hover');
         });
     });
 
@@ -53,9 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
             heroContent.style.transform = `translateY(${scrolled * 0.4}px)`;
             heroContent.style.opacity = 1 - (scrolled / 700);
         }
+
+        // 4. BOTÓN VOLVER ARRIBA
+        const backToTop = document.getElementById('back-to-top');
+        if (scrolled > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
     });
 
-    // 4. EFECTO RESPIRACIÓN EN BOTONES
+    // 5. EFECTO RESPIRACIÓN EN BOTONES
     const ctaButtons = document.querySelectorAll('.cta-button');
     ctaButtons.forEach(btn => {
         btn.classList.add('breathe-animation');
