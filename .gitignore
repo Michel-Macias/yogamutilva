@@ -1,0 +1,18 @@
+# 🧘 Yoga Mutilva - Git Ignore
+
+# Material de referencia y capturas de Pedro (No necesario para la web)
+pedro/
+
+# Archivos de Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs y Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
