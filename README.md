@@ -1,21 +1,30 @@
-# 🧘 Yoga Mutilva - Proyecto 2026
+# 🧘 Yoga Mutilva - Zen-Modern 2026
 
-Este proyecto es una landing page moderna y minimalista para la escuela de yoga **Alaya Yoga Mutilva**.
+[![Live Demo](https://img.shields.io/badge/demo-online-orange?style=for-the-badge&logo=github)](https://michel-macias.github.io/yogamutilva/)
 
-## 🚀 Características
-- **Arquitectura:** HTML5 Semántico y CSS3 nativo (Vanilla).
-- **Diseño:** Zen-Modern 2026 (Paleta de colores tierra, tipografía fluida).
-- **Performance:** 100/100 en Google PageSpeed (sin frameworks pesados).
-- **UX:** Botón flotante de WhatsApp para reservas directas y diseño Mobile-First.
+Landing page inmersiva diseñada para la escuela **Yoga Mutilva**. Una experiencia digital que combina la paz del yoga con la tecnología de vanguardia de 2026.
 
-## 🎨 Paleta de Colores
-- **Primario:** `#F4A460` (Azafrán)
-- **Fondo:** `#FDF5E6` (Crema)
-- **Contraste:** `#4A5D4E` (Verde Bosque)
-- **Texto:** `#2F2F2F` (Antracita)
+## 🌐 Versión Online
+Puedes ver el proyecto en vivo aquí:  
+👉 **[https://michel-macias.github.io/yogamutilva/](https://michel-macias.github.io/yogamutilva/)**
 
-## 🛠️ Despliegue
-El proyecto está diseñado para ser alojado de forma gratuita en **GitHub Pages**.
+## ✨ Características Principales
+- **Metodología Mobile-First:** Optimización total para dispositivos móviles con mejoras progresivas para escritorio.
+- **Cursor Zen:** Interfaz sin puntero estándar, sustituido por un aura magnética y un punto de enfoque.
+- **Cero Dependencias:** Construido exclusivamente con **Vanilla HTML5, CSS3 Moderno y JavaScript nativo**.
+- **Rendimiento Extremo:** Carga instantánea y animaciones fluidas mediante `IntersectionObserver` y `CSS Hardware Acceleration`.
+- **Estética "Santuario":** Paleta de colores orgánica (Azafrán, Lino, Verde Musgo) y tipografía elegante (*Cormorant Garamond*).
+
+## 🛠️ Tecnologías
+- **Frontend:** HTML5, CSS3 (Custom Properties, Flexbox, Grid).
+- **Interacciones:** JavaScript ES6+ (Animaciones de inercia, Parallax orgánico).
+- **Despliegue:** GitHub Pages con flujo de trabajo optimizado.
+
+## 🎨 Identidad Visual
+- **Primario:** `#F4A460` (Azafrán Sanctuary)
+- **Fondo:** `#FDF5E6` (Lino Orgánico)
+- **Contraste:** `#4A5D4E` (Verde Bosque Profundo)
 
 ---
-Desarrollado por **Michel Macias** (Shadow Agent OS: Nex-OS).
+**Director del Proyecto:** Michel Macias  
+**Arquitecto de Sistemas:** Nex-OS (Shadow Agent OS)
