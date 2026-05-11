@@ -1,0 +1,444 @@
+:root {
+    --primary: #F4A460;
+    --bg: #FDF5E6;
+    --bg-alt: #f4f1ec;
+    --contrast: #4A5D4E;
+    --text: #2F2F2F;
+    --white: #ffffff;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+}
+
+/* Header & Nav */
+header {
+    padding: 2rem;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo-container {
+    max-width: 200px;
+    transition: transform 0.3s;
+}
+
+.main-logo {
+    width: 100%;
+    height: auto;
+    /* Truco para logos con fondo: Invertir y usar screen para transparencia */
+    filter: invert(1) brightness(2);
+    mix-blend-mode: screen;
+}
+
+.logo-container:hover {
+    transform: scale(1.05);
+}
+
+.team-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    border: 3px solid var(--bg-alt);
+    transition: transform 0.3s;
+}
+
+.team-card:hover .team-img {
+    transform: scale(1.05);
+    border-color: var(--primary);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--primary);
+}
+
+/* Hero Section */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 5rem 2rem 0; /* Añadido padding superior para bajar el texto */
+}
+
+.hero-content h1 {
+    font-size: 3.5rem; /* Reducido de 4.5rem */
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    background-color: var(--primary);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(244, 164, 96, 0.3);
+}
+
+/* Sections General */
+section {
+    padding: 8rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.bg-alt {
+    max-width: 100%;
+    background-color: var(--bg-alt);
+}
+
+h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--contrast);
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: var(--primary);
+    margin: 1.5rem auto;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 4rem;
+    font-weight: 300;
+}
+
+/* Team Grid */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.team-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: transform 0.3s;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+}
+
+.team-card h3 {
+    font-size: 1.5rem;
+    color: var(--contrast);
+}
+
+.team-card .role {
+    color: var(--primary);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.team-card .bio {
+    font-size: 0.95rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+}
+
+.team-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: auto;
+}
+
+.team-social a {
+    width: 20px;
+    height: 20px;
+    display: block;
+    transition: transform 0.3s, color 0.3s;
+    color: var(--contrast);
+    opacity: 0.6;
+}
+
+.team-social a svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+.team-social a:hover {
+    transform: translateY(-3px);
+    opacity: 1;
+}
+
+.team-social a[title="WhatsApp"]:hover { color: #25d366; }
+.team-social a[title="Instagram"]:hover { color: #e4405f; }
+.team-social a[title="Email"]:hover { color: var(--primary); }
+
+/* Prácticas Detail */
+.practica-detail {
+    margin-bottom: 5rem;
+    text-align: left;
+    background: var(--white);
+    padding: 4rem;
+    border-radius: 30px;
+}
+
+.practica-text h3 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.benefits {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    list-style: none;
+}
+
+.benefits li::before {
+    content: '•';
+    color: var(--primary);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Grid & Cards */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+}
+
+/* Schedule Table */
+.table-responsive {
+    overflow-x: auto;
+    margin-top: 2rem;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.schedule-table th {
+    background: var(--contrast);
+    color: var(--white);
+    padding: 1.5rem;
+    font-family: var(--serif);
+    font-size: 1.2rem;
+}
+
+.schedule-table td {
+    padding: 1.5rem;
+    border: 1px solid var(--bg-alt);
+    font-size: 0.9rem;
+    vertical-align: top;
+}
+
+/* Tarifas */
+.tarifas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.tarifa-card {
+    background: var(--white);
+    padding: 3rem 2rem;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+.tarifa-card.featured {
+    border: 2px solid var(--primary);
+    transform: scale(1.05);
+}
+
+.price {
+    font-size: 3rem;
+    font-family: var(--serif);
+    color: var(--contrast);
+    margin: 1rem 0;
+}
+
+.price span {
+    font-size: 1rem;
+    font-family: var(--sans);
+}
+
+.trimestre {
+    font-weight: 500;
+    color: var(--primary);
+}
+
+/* Testimonios */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+blockquote {
+    font-style: italic;
+    font-size: 1.1rem;
+    padding: 2rem;
+    background: var(--bg-alt);
+    border-radius: 20px;
+    position: relative;
+}
+
+cite {
+    display: block;
+    margin-top: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Footer */
+footer {
+    background: var(--contrast);
+    color: var(--white);
+    padding: 6rem 2rem 2rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.footer-info h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.copyright {
+    margin-top: 5rem;
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+/* WhatsApp Float */
+.whatsapp-float {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+.whatsapp-float img {
+    width: 35px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.8rem; }
+    nav ul { display: none; }
+    .footer-content { flex-direction: column; text-align: center; }
+    .footer-info { margin-bottom: 3rem; }
+    .tarifa-card.featured { transform: scale(1); }
+}
