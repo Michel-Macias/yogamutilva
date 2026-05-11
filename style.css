@@ -434,11 +434,80 @@ footer {
     width: 35px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .hero-content h1 { font-size: 2.8rem; }
-    nav ul { display: none; }
-    .footer-content { flex-direction: column; text-align: center; }
-    .footer-info { margin-bottom: 3rem; }
-    .tarifa-card.featured { transform: scale(1); }
+/* --- ANIMACIONES 2026 --- */
+
+/* Reveal on Scroll */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(10px);
+    transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, opacity, filter;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+/* Breathing Animation */
+@keyframes breathe {
+    0%, 100% { transform: scale(1); box-shadow: 0 10px 20px rgba(244, 164, 96, 0.2); }
+    50% { transform: scale(1.05); box-shadow: 0 15px 30px rgba(244, 164, 96, 0.4); }
+}
+
+.breathe-animation {
+    animation: breathe 6s infinite ease-in-out;
+}
+
+/* Custom Cursor */
+#custom-cursor {
+    position: fixed;
+    top: -15px;
+    left: -15px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.2;
+    mix-blend-mode: multiply;
+    transition: width 0.3s, height 0.3s, opacity 0.3s;
+}
+
+#custom-cursor-dot {
+    position: fixed;
+    top: -3px;
+    left: -3px;
+    width: 6px;
+    height: 6px;
+    background-color: var(--contrast);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+}
+
+.cursor-hover {
+    width: 60px !important;
+    height: 60px !important;
+    opacity: 0.1 !important;
+}
+
+.dot-hover {
+    transform: scale(2);
+    background-color: var(--primary) !important;
+}
+
+/* Ocultar cursor real en desktop para mejor experiencia */
+@media (min-width: 1024px) {
+    body { cursor: none; }
+    a, button { cursor: none; }
+}
+
+/* Desactivar cursor en móvil */
+@media (max-width: 1023px) {
+    #custom-cursor, #custom-cursor-dot { display: none; }
+    body { cursor: auto; }
 }
