@@ -1,12 +1,13 @@
 :root {
-    --primary: #F4A460;
-    --bg: #FDF5E6;
-    --bg-alt: #f4f1ec;
-    --contrast: #4A5D4E;
-    --text: #2F2F2F;
+    --primary: #6C5CE7;
+    --bg: #0F0F0F;
+    --bg-alt: #1A1A1A;
+    --contrast: #A29BFE;
+    --text: #E0E0E0;
     --white: #ffffff;
-    --serif: 'Cormorant Garamond', serif;
-    --sans: 'Montserrat', sans-serif;
+    --accent: #00CEC9;
+    --serif: 'Playfair Display', serif;
+    --sans: 'Poppins', sans-serif;
     --whatsapp: #25d366;
     --instagram: #e4405f;
 }
@@ -37,15 +38,24 @@ body {
 
 h1, h2, h3 {
     font-family: var(--serif);
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 /* --- HEADER & NAV --- */
 header {
-    padding: 1.5rem;
-    position: absolute;
+    padding: 2rem;
+    position: fixed;
     width: 100%;
-    z-index: 100;
+    z-index: 1000;
+    transition: all 0.4s ease;
+}
+
+.header-scrolled {
+    padding: 1rem 2rem;
+    background: rgba(15, 15, 15, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 nav {
@@ -56,17 +66,21 @@ nav {
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.8rem 2rem;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
 }
 
 .logo-container {
-    max-width: 160px;
+    max-width: 140px;
 }
 
 .main-logo {
     width: 100%;
     height: auto;
-    filter: invert(1) brightness(2);
-    mix-blend-mode: screen;
+    filter: brightness(1.2);
 }
 
 nav ul {
@@ -74,22 +88,37 @@ nav ul {
     flex-wrap: wrap;
     justify-content: center;
     list-style: none;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: var(--white);
-    font-size: 0.8rem;
-    font-weight: 400;
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-    transition: color 0.3s ease;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: var(--primary);
+    color: var(--white);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
 }
 
 /* --- HERO --- */
@@ -113,88 +142,120 @@ nav ul li a:hover {
 }
 
 .hero-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    text-shadow: 0 2px 15px rgba(0,0,0,0.5);
-    line-height: 1.2;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+    line-height: 1.1;
+    font-weight: 800;
 }
 
 .hero-content p {
-    font-size: 1.1rem;
-    margin-bottom: 2.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
     font-weight: 300;
-    text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .cta-button {
     display: inline-block;
-    padding: 1.2rem 2.5rem;
-    background-color: var(--primary);
+    padding: 1.2rem 2.8rem;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
     color: var(--white);
     text-decoration: none;
-    border-radius: 50px;
-    font-weight: 500;
-    transition: all 0.3s ease;
+    border-radius: 100px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none;
 }
 
 .cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(244, 164, 96, 0.3);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(108, 92, 231, 0.4);
 }
 
 /* --- SECTIONS --- */
 section {
-    padding: 5rem 1.5rem;
+    padding: 8rem 1.5rem;
     width: 100%;
     text-align: center;
 }
 
+.bg-alt {
+    background-color: var(--bg-alt);
+}
+
 h2 {
-    font-size: 2.2rem;
-    margin-bottom: 1rem;
-    color: var(--contrast);
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+    position: relative;
+    display: inline-block;
 }
 
 h2::after {
     content: '';
     display: block;
-    width: 50px;
-    height: 2px;
-    background: var(--primary);
-    margin: 1rem auto;
+    width: 60%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    margin: 1.5rem auto 0;
 }
 
 /* --- TEAM & GRIDS --- */
 .team-grid, .grid-container, .tarifas-grid, .testimonials-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
     max-width: 1200px;
-    margin: 3rem auto 0;
+    margin: 4rem auto 0;
 }
 
 .team-card, .card, .tarifa-card {
-    background: var(--white);
-    padding: 3rem 2rem;
-    border-radius: 24px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.04);
+    background: var(--bg-alt);
+    padding: 3.5rem 2.5rem;
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: transform 0.3s ease;
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.team-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(108, 92, 231, 0.1), transparent);
+    pointer-events: none;
 }
 
 .team-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-15px);
+    border-color: var(--primary);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
 .team-img {
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
     object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 1.5rem;
-    border: 4px solid var(--bg-alt);
+    border-radius: 30px;
+    margin-bottom: 2rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transform: rotate(-3deg);
+    transition: transform 0.5s ease;
+}
+
+.team-card:hover .team-img {
+    transform: rotate(0deg) scale(1.05);
 }
 
 .team-social {
@@ -205,93 +266,99 @@ h2::after {
 }
 
 .team-social a {
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--contrast);
+    color: var(--text);
     transition: all 0.3s ease;
-    opacity: 0.6;
 }
 
 .team-social svg {
-    width: 100%;
-    height: 100%;
+    width: 20px;
+    height: 20px;
     fill: currentColor;
 }
 
-/* Colores específicos en hover */
 .team-social a:hover {
-    opacity: 1;
-    transform: translateY(-5px) scale(1.2);
+    background: var(--primary);
+    color: var(--white);
+    transform: translateY(-5px);
 }
-
-.team-social a[title="WhatsApp"]:hover { color: var(--whatsapp); }
-.team-social a[title="Instagram"]:hover { color: var(--instagram); }
-.team-social a[title="Email"]:hover { color: var(--primary); }
 
 /* --- PRACTICAS --- */
 .practica-detail {
     max-width: 1000px;
     margin: 0 auto 4rem;
     text-align: left;
-    background: var(--white);
-    padding: 2.5rem;
-    border-radius: 24px;
+    background: var(--bg-alt);
+    padding: 4rem;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .benefits {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     list-style: none;
 }
 
 .benefits li {
-    margin-bottom: 0.8rem;
-    padding-left: 1.5rem;
+    margin-bottom: 1.2rem;
+    padding-left: 2rem;
     position: relative;
+    font-size: 0.95rem;
 }
 
 .benefits li::before {
-    content: '•';
-    color: var(--primary);
+    content: '✦';
+    color: var(--accent);
     position: absolute;
     left: 0;
-    font-weight: bold;
 }
 
 /* --- SCHEDULE --- */
 .table-responsive {
     overflow-x: auto;
-    margin-top: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    margin-top: 3rem;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .schedule-table {
     min-width: 700px;
     width: 100%;
     border-collapse: collapse;
-    background: var(--white);
+    background: var(--bg-alt);
 }
 
 .schedule-table th {
-    background: var(--contrast);
+    background: rgba(108, 92, 231, 0.15);
     color: var(--white);
-    padding: 1.5rem;
+    padding: 2rem;
+    font-family: var(--serif);
+    font-size: 1.2rem;
 }
 
 .schedule-table td {
-    padding: 1.5rem;
-    border: 1px solid var(--bg-alt);
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.03);
     font-size: 0.9rem;
+    transition: background 0.3s ease;
+}
+
+.schedule-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
 }
 
 /* --- FOOTER --- */
 footer {
-    background: var(--contrast);
-    color: var(--white);
-    padding: 5rem 1.5rem 2rem;
+    background: #080808;
+    color: var(--text);
+    padding: 8rem 1.5rem 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .footer-content {
@@ -299,133 +366,41 @@ footer {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 4rem;
     text-align: center;
 }
 
-/* --- FLOATING BUTTONS --- */
-.whatsapp-float {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    background-color: var(--whatsapp);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    z-index: 1000;
-    transition: transform 0.3s ease;
-}
-
-.whatsapp-float:hover { transform: scale(1.1); }
-.whatsapp-float img { width: 32px; }
-
-#back-to-top {
-    position: fixed;
-    bottom: 100px;
-    right: 35px;
-    width: 50px;
-    height: 50px;
-    background-color: var(--white);
-    color: var(--contrast);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    z-index: 999;
-    text-decoration: none;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-#back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-#back-to-top:hover {
-    background-color: var(--primary);
-    color: var(--white);
-    transform: translateY(-5px);
-}
-
-/* --- MEDIA QUERIES --- */
-@media (min-width: 768px) {
-    nav { flex-direction: row; justify-content: space-between; padding: 0 2rem; }
-    nav ul { gap: 2rem; }
-    nav ul li a { font-size: 0.85rem; }
-    
-    .hero-content h1 { font-size: 4rem; }
-    h2 { font-size: 3rem; }
-    
-    .team-grid, .grid-container { grid-template-columns: repeat(2, 1fr); }
-    .tarifas-grid { grid-template-columns: repeat(3, 1fr); }
-    
-    .practica-detail { padding: 4rem; }
-    .benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-}
-
-@media (min-width: 1024px) {
-    .team-grid { grid-template-columns: repeat(3, 1fr); }
-    .footer-content { flex-direction: row; justify-content: space-between; text-align: left; }
-}
-
-/* --- ANIMATIONS --- */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-@keyframes breathe {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.03); }
-}
-
-.breathe-animation {
-    animation: breathe 5s infinite ease-in-out;
-}
-
+/* --- CUSTOM CURSOR v2 --- */
 #custom-cursor {
     position: fixed;
     top: 0;
     left: 0;
-    width: 40px;
-    height: 40px;
-    margin: -20px 0 0 -20px;
-    background-color: var(--primary);
+    width: 60px;
+    height: 60px;
+    margin: -30px 0 0 -30px;
+    border: 2px solid var(--primary);
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
-    opacity: 0.15;
-    mix-blend-mode: multiply;
+    transition: width 0.3s, height 0.3s, border-color 0.3s;
 }
 
 #custom-cursor-dot {
     position: fixed;
     top: 0;
     left: 0;
-    width: 8px;
-    height: 8px;
-    margin: -4px 0 0 -4px;
-    background-color: var(--contrast);
+    width: 6px;
+    height: 6px;
+    margin: -3px 0 0 -3px;
+    background-color: var(--accent);
     border-radius: 50%;
     pointer-events: none;
     z-index: 10000;
 }
 
 .cursor-hover {
-    transform: scale(1.5);
-    background-color: var(--primary) !important;
-    opacity: 0.3 !important;
+    width: 100px !important;
+    height: 100px !important;
+    border-color: var(--accent) !important;
+    background: rgba(0, 206, 201, 0.05);
 }

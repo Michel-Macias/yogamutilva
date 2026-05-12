@@ -45,8 +45,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. PARALLAX ORGÁNICO (Hero)
     const heroContent = document.querySelector('.hero-content');
+    const header = document.querySelector('header');
+
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
+        
+        // Efecto scroll header
+        if (scrolled > 50) {
+            header.classList.add('header-scrolled');
+        } else {
+            header.classList.remove('header-scrolled');
+        }
+
         if (heroContent) {
             heroContent.style.transform = `translateY(${scrolled * 0.4}px)`;
             heroContent.style.opacity = 1 - (scrolled / 700);
