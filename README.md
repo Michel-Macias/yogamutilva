@@ -9,10 +9,11 @@ Puedes ver el proyecto en vivo aquí:
 👉 **[https://michel-macias.github.io/yogamutilva/](https://michel-macias.github.io/yogamutilva/)**
 
 ## ✨ Características Principales
-- **Metodología Mobile-First:** Optimización total para dispositivos móviles con mejoras progresivas para escritorio.
-- **Cursor Zen:** Interfaz sin puntero estándar, sustituido por un aura magnética y un punto de enfoque.
+- **Metodología Mobile-First:** Optimización total para dispositivos móviles (Menú hamburguesa adaptativo, reestructuración CSS).
+- **Integración de Reservas:** Ventana modal nativa (Glassmorphism) que embebe el calendario externo sin sacar al usuario de la web.
+- **Micro-interacciones Orgánicas:** Animaciones fluidas al hacer scroll (Stagger Effect), fotos dinámicas en hover y cursor estilo "Latido Zen".
+- **Glassmorphism UI:** Cabecera flotante translúcida y modales con desenfoque de fondo que mantienen la ligereza visual.
 - **Cero Dependencias:** Construido exclusivamente con **Vanilla HTML5, CSS3 Moderno y JavaScript nativo**.
-- **Rendimiento Extremo:** Carga instantánea y animaciones fluidas mediante `IntersectionObserver` y `CSS Hardware Acceleration`.
 - **Estética "Santuario":** Paleta de colores orgánica (Azafrán, Lino, Verde Musgo) y tipografía elegante (*Cormorant Garamond*).
 
 ## 🛠️ Tecnologías
