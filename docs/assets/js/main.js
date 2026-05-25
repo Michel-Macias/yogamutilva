@@ -11,17 +11,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // 2. CURSOR ZEN (Desktop)
-    // El HTML de Yoga-Mutilva no crea los divs del cursor manualmente, se hacían por JS en la version anterior.
-    const cursor = document.createElement('div');
-    cursor.id = 'custom-cursor';
-    document.body.appendChild(cursor);
-
-    const cursorDot = document.createElement('div');
-    cursorDot.id = 'custom-cursor-dot';
-    document.body.appendChild(cursorDot);
-    
+    // 2. CURSOR ZEN (Solo Desktop > 1024px)
     if (window.innerWidth > 1024) {
+        const cursor = document.createElement('div');
+        cursor.id = 'custom-cursor';
+        document.body.appendChild(cursor);
+
+        const cursorDot = document.createElement('div');
+        cursorDot.id = 'custom-cursor-dot';
+        document.body.appendChild(cursorDot);
+
         document.addEventListener('mousemove', (e) => {
             const { clientX: x, clientY: y } = e;
             cursorDot.style.transform = `translate(${x}px, ${y}px)`;
