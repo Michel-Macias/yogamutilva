@@ -305,6 +305,18 @@ h2::after {
 .team-social a[title="WhatsApp"]:hover { color: var(--whatsapp); }
 .team-social a[title="Instagram"]:hover { color: var(--instagram); }
 .team-social a[title="Email"]:hover { color: var(--primary); }
+.team-social a[title="Reservar"]:hover { color: var(--primary); }
+
+/* --- TERAPIA LNT® SECTION --- */
+#lnt h2::after {
+    margin: 1.5rem auto;
+}
+
+#lnt .container > div > div:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+    border: 1px solid var(--primary);
+}
 
 /* --- PRACTICAS --- */
 .practica-detail {

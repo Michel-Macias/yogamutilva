@@ -82,23 +82,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 6. LÓGICA DEL MODAL CALENDARIO
-    const btnHero = document.getElementById('btn-reservar-hero');
-    const btnFooter = document.getElementById('btn-reservar-footer');
+    const reservationTriggers = document.querySelectorAll('.btn-reservar-trigger');
     const modal = document.getElementById('calendario-modal');
     const closeBtn = document.getElementById('modal-close');
 
     function openModal() {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Evitar scroll fondo
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Evitar scroll fondo
+        }
     }
 
     function closeModal() {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     }
 
-    if (btnHero) btnHero.addEventListener('click', openModal);
-    if (btnFooter) btnFooter.addEventListener('click', openModal);
+    reservationTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+        });
+    });
+
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
     
     // Cerrar si se hace click fuera del modal
