@@ -28,7 +28,7 @@
 
 ### 4. Tareas Pendientes
 - [ ] **Horarios:** Actualizar tabla incluyendo a Mario (Viernes tarde).
-- [ ] **Nueva Laura:** Añadir a la instructora adicional (646 581 781) cuando se reciba foto/bio.
+- [x] **Nueva Laura:** Añadida como Terapeuta de Reiki y Péndulo Hebreo (646 581 781). Bio y foto integradas.
 
 ---
 *Nex-OS: Fase de Reestructuración Técnica y Conversión COMPLETADA.*
