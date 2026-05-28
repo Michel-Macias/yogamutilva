@@ -25,10 +25,19 @@
 ### 📅 Sistema de Reservas (Prioridad Alta)
 - [x] **Integración Modal:** Sustituido el iframe externo directo por una ventana modal que mantiene al usuario en la web.
 - [x] **Unificación de Triggers:** Todos los botones de reserva (Hero, LNT, Equipo, Tarifas) operan bajo la misma clase `.btn-reservar-trigger`.
+- [x] **Filtro de Reservas Exclusivo:** Rediseñado el modal para informar de que la reserva online es exclusiva de alumnos activos y redirigir el contacto a coordinación (Pedro) para mayor seguridad.
+
+### 🏠 Alquiler de Instalaciones
+- [x] **Alquiler de Sala:** Nueva sección al final de la página invitando al alquiler del espacio para otras actividades, incluyendo un grid responsivo con las fotos de la escuela (`escuela.jpeg`, `escuela1.jpeg`, etc.).
+
+### 🎵 Inmersión y Multimedia Zen
+- [x] **Reproductor Zen Flotante:** Implementado un botón minimalista flotante para reproducir música relajante de fondo (`music.mp3`) de forma fluida.
+- [x] **Vídeo de Bienvenida:** Botón de vídeo interactivo integrado en el Hero que abre un reproductor modal a pantalla completa con el vídeo de Pedro (`video_pedro.mp4`).
 
 ### 4. Tareas Pendientes
-- [ ] **Horarios:** Actualizar tabla incluyendo a Mario (Viernes tarde).
+- [x] **Horarios:** Tabla depurada y corregida según la petición de Mario (se le retiró del viernes tarde, quedando su perfil limpio y exacto como Raja Yoga y Quiromasajista).
 - [x] **Nueva Laura:** Añadida como Terapeuta de Reiki y Péndulo Hebreo (646 581 781). Bio y foto integradas.
 
 ---
-*Nex-OS: Fase de Reestructuración Técnica y Conversión COMPLETADA.*
+*Nex-OS: Fase de Reestructuración Técnica, Conversión y Optimización Evolutiva COMPLETADA al 100%.*
+

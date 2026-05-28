@@ -115,4 +115,72 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target === modal) closeModal();
         });
     }
+
+    // 7. LÓGICA DEL VÍDEO MODAL
+    const videoTrigger = document.querySelector('.btn-video-trigger');
+    const videoModal = document.getElementById('video-modal');
+    const videoCloseBtn = document.getElementById('video-modal-close');
+    const presentationVideo = document.getElementById('presentation-video');
+
+    function openVideoModal() {
+        if (videoModal && presentationVideo) {
+            videoModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            presentationVideo.currentTime = 0;
+            presentationVideo.play().catch(err => console.log('Autoplay blocked:', err));
+        }
+    }
+
+    function closeVideoModal() {
+        if (videoModal && presentationVideo) {
+            videoModal.classList.remove('active');
+            document.body.style.overflow = '';
+            presentationVideo.pause();
+        }
+    }
+
+    if (videoTrigger) {
+        videoTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            openVideoModal();
+        });
+    }
+
+    if (videoCloseBtn) videoCloseBtn.addEventListener('click', closeVideoModal);
+
+    if (videoModal) {
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) closeVideoModal();
+        });
+    }
+
+    // 8. LÓGICA DEL REPRODUCTOR ZEN DE MÚSICA DE FONDO
+    const audioBtn = document.getElementById('audio-toggle-btn');
+    const zenAudio = document.getElementById('zen-background-audio');
+    const musicOnIcon = document.getElementById('music-on-icon');
+    const musicOffIcon = document.getElementById('music-off-icon');
+
+    if (audioBtn && zenAudio) {
+        // Inicializar volumen muy suave (15%) para dar atmósfera sin molestar
+        zenAudio.volume = 0.15;
+
+        audioBtn.addEventListener('click', () => {
+            if (zenAudio.paused) {
+                zenAudio.play()
+                    .then(() => {
+                        audioBtn.classList.add('playing');
+                        musicOnIcon.style.display = 'block';
+                        musicOffIcon.style.display = 'none';
+                    })
+                    .catch(err => {
+                        console.log('Audio playback blocked:', err);
+                    });
+            } else {
+                zenAudio.pause();
+                audioBtn.classList.remove('playing');
+                musicOnIcon.style.display = 'none';
+                musicOffIcon.style.display = 'block';
+            }
+        });
+    }
 });
