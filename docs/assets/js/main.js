@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 8. LÓGICA DEL REPRODUCTOR ZEN DE MÚSICA DE FONDO
+    // 8. LÓGICA DEL REPRODUCTOR ZEN DE MÚSICA DE FONDO (AUTOPLAY AL INTERACTUAR)
     const audioBtn = document.getElementById('audio-toggle-btn');
     const zenAudio = document.getElementById('zen-background-audio');
     const musicOnIcon = document.getElementById('music-on-icon');
@@ -198,22 +198,65 @@ document.addEventListener('DOMContentLoaded', () => {
         // Inicializar volumen muy suave (15%) para dar atmósfera sin molestar
         zenAudio.volume = 0.15;
 
-        audioBtn.addEventListener('click', () => {
-            if (zenAudio.paused) {
-                zenAudio.play()
-                    .then(() => {
-                        audioBtn.classList.add('playing');
-                        musicOnIcon.style.display = 'block';
-                        musicOffIcon.style.display = 'none';
-                    })
-                    .catch(err => {
-                        console.log('Audio playback blocked:', err);
-                    });
+        // Función para cambiar el estado visual del botón
+        function setAudioPlayingState(isPlaying) {
+            if (isPlaying) {
+                audioBtn.classList.add('playing');
+                musicOnIcon.style.display = 'block';
+                musicOffIcon.style.display = 'none';
             } else {
-                zenAudio.pause();
                 audioBtn.classList.remove('playing');
                 musicOnIcon.style.display = 'none';
                 musicOffIcon.style.display = 'block';
+            }
+        }
+
+        // Controladores para la reproducción automática en interacción
+        let hasAutoPlayed = false;
+
+        function tryAutoPlay() {
+            if (hasAutoPlayed) return;
+
+            zenAudio.play()
+                .then(() => {
+                    hasAutoPlayed = true;
+                    setAudioPlayingState(true);
+                    removeAutoPlayListeners();
+                })
+                .catch(err => {
+                    // El navegador bloquea hasta interacción de click/scroll, reintenta en el siguiente evento
+                    console.log('Autoplay deferred:', err);
+                });
+        }
+
+        function removeAutoPlayListeners() {
+            document.removeEventListener('click', tryAutoPlay);
+            document.removeEventListener('scroll', tryAutoPlay);
+            document.removeEventListener('touchstart', tryAutoPlay);
+        }
+
+        // Activar reproducción en la primera acción del usuario
+        document.addEventListener('click', tryAutoPlay);
+        document.addEventListener('scroll', tryAutoPlay);
+        document.addEventListener('touchstart', tryAutoPlay);
+
+        // Control de alternado manual por botón
+        audioBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evitar que el click se propague al document
+            hasAutoPlayed = true; // Desactivar cualquier reintento de autoplay
+            removeAutoPlayListeners();
+
+            if (zenAudio.paused) {
+                zenAudio.play()
+                    .then(() => {
+                        setAudioPlayingState(true);
+                    })
+                    .catch(err => {
+                        console.log('Audio manual play blocked:', err);
+                    });
+            } else {
+                zenAudio.pause();
+                setAudioPlayingState(false);
             }
         });
     }
