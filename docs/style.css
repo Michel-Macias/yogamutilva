@@ -723,7 +723,7 @@ footer {
 #zen-audio-player {
     position: fixed;
     bottom: 30px;
-    right: 30px;
+    right: 110px; /* Desplazado a la izquierda para no tapar el botón de WhatsApp */
     z-index: 999;
 }
 
@@ -771,8 +771,8 @@ footer {
     }
     
     #zen-audio-player {
-        bottom: 20px;
-        right: 20px;
+        bottom: 30px;
+        right: 100px; /* Desplazado a la izquierda en móvil también */
     }
     
     #audio-toggle-btn {
