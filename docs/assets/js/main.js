@@ -81,10 +81,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 6. LÓGICA DEL MODAL CALENDARIO
+    // 6. LÓGICA DEL MODAL CALENDARIO (COMBINADO DUAL-VIEW)
     const reservationTriggers = document.querySelectorAll('.btn-reservar-trigger');
     const modal = document.getElementById('calendario-modal');
     const closeBtn = document.getElementById('modal-close');
+    
+    // Elementos de la vista dual de reservas
+    const btnEntrarCalendario = document.getElementById('btn-entrar-calendario');
+    const btnVolverSelector = document.getElementById('btn-volver-selector');
+    const selectorView = document.getElementById('reservas-selector-view');
+    const calendarView = document.getElementById('reservas-calendar-view');
+    const modalContent = document.getElementById('reservas-modal-content');
 
     function openModal() {
         if (modal) {
@@ -93,10 +100,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function resetReservasModal() {
+        if (selectorView && calendarView && modalContent) {
+            calendarView.style.display = 'none';
+            selectorView.style.display = 'block';
+            modalContent.style.maxWidth = '700px';
+            modalContent.style.height = 'auto';
+        }
+    }
+
     function closeModal() {
         if (modal) {
             modal.classList.remove('active');
             document.body.style.overflow = '';
+            // Resetear a la vista del selector para la próxima apertura
+            resetReservasModal();
         }
     }
 
@@ -113,6 +131,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modal) {
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal();
+        });
+    }
+
+    // Control dinámico de vistas en el modal de reservas
+    if (btnEntrarCalendario && selectorView && calendarView && modalContent) {
+        btnEntrarCalendario.addEventListener('click', () => {
+            selectorView.style.display = 'none';
+            calendarView.style.display = 'block';
+            modalContent.style.maxWidth = '850px'; // Agrandar para albergar el calendario iframe
+            modalContent.style.height = '85vh';
+        });
+    }
+
+    if (btnVolverSelector && selectorView && calendarView && modalContent) {
+        btnVolverSelector.addEventListener('click', () => {
+            resetReservasModal();
         });
     }
 
