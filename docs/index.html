@@ -36,7 +36,14 @@
 
     <main>
         <!-- HERO -->
-        <section id="hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/img/hero_yoga.jpg');">
+        <section id="hero">
+            <!-- Contenedor de Diapositivas en segundo plano -->
+            <div class="hero-slides-container">
+                <div class="hero-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('assets/img/hero_yoga.jpg');" role="img" aria-label="Persona practicando yoga en ambiente sereno"></div>
+                <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('assets/img/escuela1.jpeg');" role="img" aria-label="Sala amplia y luminosa de yoga en Alaya Mutilva"></div>
+                <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('assets/img/escuela2.jpeg');" role="img" aria-label="Detalle de materiales de yoga, zafus y velas en el centro"></div>
+            </div>
+
             <div class="hero-content">
                 <h1>Alaya: Tu espacio de silencio y consciencia en Mutilva</h1>
                 <p>El Yoga es el conocimiento de uno mismo. Un santuario para armonizar, equilibrar y despertar nuestra consciencia.</p>
@@ -47,6 +54,13 @@
                         Conoce nuestro espacio
                     </button>
                 </div>
+            </div>
+
+            <!-- Indicadores del Carrusel -->
+            <div class="hero-dots" aria-label="Navegación del carrusel">
+                <button class="hero-dot active" data-slide="0" aria-label="Ver imagen 1" aria-current="true"></button>
+                <button class="hero-dot" data-slide="1" aria-label="Ver imagen 2"></button>
+                <button class="hero-dot" data-slide="2" aria-label="Ver imagen 3"></button>
             </div>
         </section>
 

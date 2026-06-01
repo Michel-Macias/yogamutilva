@@ -156,19 +156,50 @@ nav {
 
 /* --- HERO --- */
 #hero {
+    position: relative;
+    overflow: hidden;
     height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-size: cover;
-    background-position: center;
     color: var(--white);
     padding: 0 1.5rem;
 }
 
+.hero-slides-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.8s ease-in-out, transform 8s ease-out;
+    z-index: 1;
+    transform: scale(1.05); /* Suave efecto inicial para zoom zen */
+}
+
+.hero-slide.active {
+    opacity: 1;
+    z-index: 2;
+    transform: scale(1); /* Suave zoom in matizado */
+}
+
 .hero-content {
+    position: relative;
+    z-index: 10; /* Por encima de las diapositivas */
     width: 100%;
     max-width: 800px;
     padding-top: 6rem;
@@ -186,6 +217,36 @@ nav {
     margin-bottom: 2.5rem;
     font-weight: 300;
     text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+}
+
+.hero-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 12px;
+}
+
+.hero-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.hero-dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.hero-dot.active {
+    background: var(--primary);
+    transform: scale(1.2);
 }
 
 .cta-button {

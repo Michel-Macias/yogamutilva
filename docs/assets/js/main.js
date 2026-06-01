@@ -261,6 +261,80 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 3.5. LÓGICA DEL CARRUSEL DE FONDO DEL HERO
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dot');
+    let currentSlide = 0;
+    let carouselInterval;
+    const slideDuration = 6000; // 6 segundos
+
+    function showSlide(index) {
+        if (!slides.length) return;
+        
+        // Retirar clases activas de la diapositiva e indicador actual
+        slides[currentSlide].classList.remove('active');
+        if (dots[currentSlide]) {
+            dots[currentSlide].classList.remove('active');
+            dots[currentSlide].removeAttribute('aria-current');
+        }
+
+        // Actualizar índice
+        currentSlide = index;
+
+        // Añadir clases activas al nuevo slide
+        slides[currentSlide].classList.add('active');
+        if (dots[currentSlide]) {
+            dots[currentSlide].classList.add('active');
+            dots[currentSlide].setAttribute('aria-current', 'true');
+        }
+    }
+
+    function nextSlide() {
+        let nextIndex = (currentSlide + 1) % slides.length;
+        showSlide(nextIndex);
+    }
+
+    function startCarousel() {
+        if (slides.length > 1) {
+            carouselInterval = setInterval(nextSlide, slideDuration);
+        }
+    }
+
+    function stopCarousel() {
+        if (carouselInterval) {
+            clearInterval(carouselInterval);
+        }
+    }
+
+    // Inicializar carrusel
+    startCarousel();
+
+    // Eventos para interactividad de los puntos de control (dots)
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            stopCarousel();
+            showSlide(index);
+            startCarousel(); // Reiniciar el temporizador tras clic manual
+        });
+    });
+
+    // Detener carrusel al reproducir el video de presentación (para ahorrar recursos CPU/GPU)
+    const videoTriggerBtn = document.querySelector('.btn-video-trigger');
+    const videoCloseBtnEl = document.getElementById('video-modal-close');
+    const videoOverlayEl = document.getElementById('video-modal');
+
+    if (videoTriggerBtn) {
+        videoTriggerBtn.addEventListener('click', stopCarousel);
+    }
+    if (videoCloseBtnEl) {
+        videoCloseBtnEl.addEventListener('click', startCarousel);
+    }
+    if (videoOverlayEl) {
+        videoOverlayEl.addEventListener('click', (e) => {
+            if (e.target === videoOverlayEl) startCarousel();
+        });
+    }
+
     // 9. LÓGICA DEL BANNER DE COOKIES INFORMATIVO
     const cookiesBanner = document.getElementById('cookies-banner');
     const cookiesAcceptBtn = document.getElementById('btn-cookies-accept');
