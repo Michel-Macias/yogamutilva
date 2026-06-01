@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declaración de Accesibilidad | Alaya Yoga Mutilva</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        .legal-container {
+            max-width: 800px;
+            margin: 120px auto 60px;
+            padding: 0 20px;
+            font-family: var(--sans);
+            color: var(--text);
+        }
+        .legal-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .legal-header h1 {
+            font-family: var(--serif);
+            font-size: 3rem;
+            color: var(--contrast);
+            margin-bottom: 10px;
+        }
+        .legal-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.03);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+        .legal-content h2 {
+            font-family: var(--serif);
+            font-size: 1.8rem;
+            color: var(--contrast);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .legal-content h2::after {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 2px;
+            background: var(--primary);
+            margin: 8px 0 0 0;
+        }
+        .legal-content p {
+            margin-bottom: 20px;
+        }
+        .legal-content ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        .legal-content li {
+            margin-bottom: 8px;
+        }
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--contrast);
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: color 0.3s ease;
+        }
+        .back-home:hover {
+            color: var(--primary);
+        }
+        @media (max-width: 768px) {
+            .legal-container {
+                margin-top: 100px;
+            }
+            .legal-content {
+                padding: 25px;
+            }
+            .legal-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header-scrolled">
+        <nav>
+            <div class="logo-container">
+                <a href="index.html" aria-label="Ir al inicio">
+                    <img src="assets/img/logo.webp" alt="Alaya Yoga Logo" class="main-logo">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Volver al Inicio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="legal-container">
+        <a href="index.html" class="back-home" aria-label="Volver a la página de inicio">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="transform: rotate(180deg);"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L20.14 12l-7.29-7.29-1.42 1.42 5.43 5.43H5v2z"/></svg>
+            Volver a la página principal
+        </a>
+        
+        <div class="legal-header">
+            <h1>Declaración de Accesibilidad</h1>
+            <p>Compromiso voluntario de Alaya Yoga con la usabilidad digital inclusiva</p>
+        </div>
+
+        <article class="legal-content">
+            <p>En <strong>Alaya Yoga Mutilva</strong>, entendemos que el yoga es unión, inclusión y respeto hacia la diversidad de todas las personas. Queremos trasladar esa misma filosofía a nuestro entorno digital, velando por que todos los usuarios de internet, independientemente de sus capacidades físicas, sensoriales o cognitivas, puedan acceder a nuestra información en igualdad de condiciones.</p>
+
+            <h2>1. Nuestro Compromiso</h2>
+            <p>Aunque no somos un organismo público sujeto al Real Decreto 1112/2018 ni dependemos de subvenciones que nos lo impongan de manera administrativa, hemos decidido de forma plenamente **voluntaria** implementar buenas prácticas y pautas de accesibilidad en nuestro sitio web.</p>
+            <p>Trabajamos para estructurar y diseñar nuestro portal siguiendo los estándares internacionales de accesibilidad sugeridos por las Directrices de Accesibilidad para el Contenido Web (WCAG 2.1) en su nivel de conformidad AA.</p>
+
+            <h2>2. Medidas de Accesibilidad Adoptadas</h2>
+            <ul>
+                <li><strong>Estructura Semántica Correcta:</strong> Utilización adecuada de etiquetas HTML5 jerárquicas (cabeceras `h1`, `h2`, secciones, etc.) para facilitar la navegación a usuarios que utilicen lectores de pantalla.</li>
+                <li><strong>Navegación por Teclado:</strong> Aseguramos que todos los enlaces y elementos interactivos del sitio (como el reproductor flotante o los modales) sean operables utilizando únicamente el teclado mediante tabulación intuitiva y visualmente visible.</li>
+                <li><strong>Contraste de Colores Apropriado:</strong> Selección de una paleta de colores natural y orgánica (lino, azafrán y verde salvia) que proporciona una relación de contraste suficiente para una legibilidad sin fatiga visual.</li>
+                <li><strong>Textos Alternativos:</strong> Inclusión de descripciones de texto alternativo en imágenes significativas del centro, profesores e instalaciones.</li>
+                <li><strong>Desactivación del Puntero Zen en Móviles:</strong> El puntero magnético zen flotante está diseñado para mejorar la inmersión en ordenadores pero se desactiva en móviles y pantallas táctiles para no interferir con las tecnologías de asistencia nativas de estos dispositivos.</li>
+            </ul>
+
+            <h2>3. Mejora Continua y Contacto</h2>
+            <p>La accesibilidad web es un proceso de mejora continua. Si durante tu navegación por nuestra página experimentas cualquier tipo de dificultad técnica para acceder a algún contenido, o deseas hacernos llegar una sugerencia de mejora, por favor contacta con nosotros:</p>
+            <ul>
+                <li><strong>Correo de contacto:</strong> info@yogamutilva.com</li>
+                <li><strong>Coordinador de Accesibilidad (Pedro):</strong> +34 639 457 793</li>
+            </ul>
+            <p>Agradecemos sinceramente tu colaboración para hacer de Alaya Yoga Mutilva un espacio cada día más abierto, inclusivo y accesible.</p>
+        </article>
+    </main>
+
+    <footer style="padding: 30px 20px; text-align: center; background: var(--contrast); color: var(--white); margin-top: 60px;">
+        <p class="copyright" style="font-size: 0.85rem; opacity: 0.85;">&copy; 2026 Alaya Yoga Mutilva. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

@@ -260,4 +260,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // 9. LÓGICA DEL BANNER DE COOKIES INFORMATIVO
+    const cookiesBanner = document.getElementById('cookies-banner');
+    const cookiesAcceptBtn = document.getElementById('btn-cookies-accept');
+    const cookiesConfigLink = document.getElementById('open-cookies-config');
+
+    if (cookiesBanner && cookiesAcceptBtn) {
+        // Comprobar si ya se ha aceptado anteriormente
+        const consent = localStorage.getItem('alaya-cookies-consent');
+
+        if (!consent) {
+            // Esperar 1.5 segundos para mostrarlo de forma elegante
+            setTimeout(() => {
+                cookiesBanner.classList.add('active');
+                cookiesBanner.setAttribute('aria-hidden', 'false');
+            }, 1500);
+        }
+
+        // Evento al aceptar
+        cookiesAcceptBtn.addEventListener('click', () => {
+            localStorage.setItem('alaya-cookies-consent', 'accepted');
+            cookiesBanner.classList.remove('active');
+            cookiesBanner.setAttribute('aria-hidden', 'true');
+        });
+
+        // Evento al volver a abrir desde el footer (Gestión de cookies)
+        if (cookiesConfigLink) {
+            cookiesConfigLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                cookiesBanner.classList.add('active');
+                cookiesBanner.setAttribute('aria-hidden', 'false');
+            });
+        }
+    }
 });

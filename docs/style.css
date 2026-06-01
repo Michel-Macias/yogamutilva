@@ -781,3 +781,128 @@ footer {
     }
 }
 
+/* --- FOOTER LEGAL LINKS --- */
+.footer-legal-links {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    width: 100%;
+}
+
+.footer-legal-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    opacity: 0.75;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.footer-legal-links a:hover {
+    opacity: 1;
+    color: var(--primary);
+    transform: translateY(-1px);
+}
+
+/* --- BANNER DE COOKIES --- */
+.cookies-banner-overlay {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    z-index: 99999;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    transition: bottom 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cookies-banner-overlay.active {
+    bottom: 0;
+}
+
+.cookies-banner-container {
+    background: var(--white);
+    border: 1px solid rgba(95, 113, 97, 0.2); /* var(--contrast) con opacidad */
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    padding: 1.5rem 2rem;
+    max-width: 700px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    border-left: 5px solid var(--primary);
+}
+
+.cookies-banner-container h3 {
+    font-family: var(--serif);
+    color: var(--contrast);
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.cookies-banner-container p {
+    font-size: 0.88rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.cookies-banner-container p a {
+    color: var(--contrast);
+    font-weight: 600;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.cookies-banner-container p a:hover {
+    color: var(--primary);
+}
+
+.cookies-banner-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.cookies-btn {
+    padding: 0.6rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cookies-btn-primary {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.cookies-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(244, 164, 96, 0.3);
+}
+
+@media (max-width: 768px) {
+    .cookies-banner-overlay {
+        padding: 1rem;
+    }
+    .cookies-banner-container {
+        padding: 1.2rem 1.5rem;
+    }
+    .footer-legal-links {
+        gap: 0.8rem;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
