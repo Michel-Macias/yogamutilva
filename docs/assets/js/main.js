@@ -1,18 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- ACCESSIBILITY: Reduced Motion Check ---
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // 1. REVELACIÓN POR SCROLL (Intersection Observer)
     const revealElements = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
+                observer.unobserve(entry.target); // Liberar recursos tras revelar
             }
         });
     }, { threshold: 0.15 });
 
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // 2. CURSOR ZEN (Solo Desktop > 1024px)
-    if (window.innerWidth > 1024) {
+    // 2. CURSOR ZEN (Solo Desktop > 1024px y sin reduced-motion)
+    if (window.innerWidth > 1024 && !prefersReducedMotion) {
         const cursor = document.createElement('div');
         cursor.id = 'custom-cursor';
         document.body.appendChild(cursor);
@@ -36,69 +40,130 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. EFECTOS HEADER Y HERO PARALLAX
+    // 3. EFECTOS HEADER Y HERO PARALLAX (con requestAnimationFrame)
     const heroContent = document.querySelector('.hero-content');
     const header = document.querySelector('header');
+    let scrollTicking = false;
 
     window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        if (scrolled > 50) {
-            header.classList.add('header-scrolled');
-        } else {
-            header.classList.remove('header-scrolled');
-        }
+        if (!scrollTicking) {
+            requestAnimationFrame(() => {
+                const scrolled = window.pageYOffset;
+                if (scrolled > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
 
-        if (heroContent && window.innerWidth > 768) {
-            // Parallax sólo en desktop para mejor rendimiento en móvil
-            heroContent.style.transform = `translateY(${scrolled * 0.4}px)`;
-            heroContent.style.opacity = 1 - (scrolled / 700);
+                if (heroContent && window.innerWidth > 768 && !prefersReducedMotion) {
+                    heroContent.style.transform = `translateY(${scrolled * 0.4}px)`;
+                    heroContent.style.opacity = 1 - (scrolled / 700);
+                }
+                scrollTicking = false;
+            });
+            scrollTicking = true;
         }
     });
 
     // 4. ANIMACIÓN DE BOTONES
-    const ctaButtons = document.querySelectorAll('.cta-button');
-    ctaButtons.forEach(btn => {
-        btn.classList.add('breathe-animation');
-    });
+    if (!prefersReducedMotion) {
+        const ctaButtons = document.querySelectorAll('.cta-button');
+        ctaButtons.forEach(btn => {
+            btn.classList.add('breathe-animation');
+        });
+    }
 
-    // 5. MENÚ HAMBURGUESA MÓVIL
+    // 5. MENÚ HAMBURGUESA MÓVIL (con ARIA y Escape key)
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
     const navItems = document.querySelectorAll('.nav-links li a');
 
+    function toggleMobileMenu() {
+        const isActive = hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', String(isActive));
+    }
+
+    function closeMobileMenu() {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+    }
+
     if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
+        hamburger.addEventListener('click', toggleMobileMenu);
+        hamburger.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleMobileMenu();
+            }
         });
 
-        // Cerrar menú al hacer clic en un enlace
         navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
+            item.addEventListener('click', closeMobileMenu);
         });
     }
 
-    // 6. LÓGICA DEL MODAL CALENDARIO (COMBINADO DUAL-VIEW)
+    // 6. SISTEMA DE MODALES UNIFICADO (DRY)
+    function openModal(modalEl, triggerEl) {
+        if (!modalEl) return;
+        modalEl.classList.add('active');
+        modalEl.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+
+        // Focus trap: mover foco al primer elemento focusable
+        const focusable = modalEl.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (focusable.length) {
+            setTimeout(() => focusable[0].focus(), 100);
+        }
+
+        // Guardar referencia al trigger para devolver foco
+        modalEl._triggerElement = triggerEl || document.activeElement;
+    }
+
+    function closeModal(modalEl) {
+        if (!modalEl) return;
+        modalEl.classList.remove('active');
+        modalEl.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+
+        // Devolver foco al trigger
+        if (modalEl._triggerElement) {
+            modalEl._triggerElement.focus();
+        }
+    }
+
+    // Focus trap handler
+    function trapFocus(e, modalEl) {
+        const focusable = modalEl.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (!focusable.length) return;
+        const firstFocusable = focusable[0];
+        const lastFocusable = focusable[focusable.length - 1];
+
+        if (e.key === 'Tab') {
+            if (e.shiftKey) {
+                if (document.activeElement === firstFocusable) {
+                    e.preventDefault();
+                    lastFocusable.focus();
+                }
+            } else {
+                if (document.activeElement === lastFocusable) {
+                    e.preventDefault();
+                    firstFocusable.focus();
+                }
+            }
+        }
+    }
+
+    // --- MODAL CALENDARIO (DUAL-VIEW) ---
     const reservationTriggers = document.querySelectorAll('.btn-reservar-trigger');
-    const modal = document.getElementById('calendario-modal');
-    const closeBtn = document.getElementById('modal-close');
-    
-    // Elementos de la vista dual de reservas
+    const calModal = document.getElementById('calendario-modal');
+    const calCloseBtn = document.getElementById('modal-close');
     const btnEntrarCalendario = document.getElementById('btn-entrar-calendario');
     const btnVolverSelector = document.getElementById('btn-volver-selector');
     const selectorView = document.getElementById('reservas-selector-view');
     const calendarView = document.getElementById('reservas-calendar-view');
     const modalContent = document.getElementById('reservas-modal-content');
-
-    function openModal() {
-        if (modal) {
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Evitar scroll fondo
-        }
-    }
 
     function resetReservasModal() {
         if (selectorView && calendarView && modalContent) {
@@ -109,74 +174,68 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function closeModal() {
-        if (modal) {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-            // Resetear a la vista del selector para la próxima apertura
-            resetReservasModal();
-        }
-    }
-
     reservationTriggers.forEach(trigger => {
         trigger.addEventListener('click', (e) => {
             e.preventDefault();
-            openModal();
+            openModal(calModal, trigger);
         });
     });
 
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-    
-    // Cerrar si se hace click fuera del modal
-    if (modal) {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
+    if (calCloseBtn) calCloseBtn.addEventListener('click', () => {
+        closeModal(calModal);
+        resetReservasModal();
+    });
+
+    if (calModal) {
+        calModal.addEventListener('click', (e) => {
+            if (e.target === calModal) {
+                closeModal(calModal);
+                resetReservasModal();
+            }
         });
+        calModal.addEventListener('keydown', (e) => trapFocus(e, calModal));
     }
 
-    // Control dinámico de vistas en el modal de reservas
     if (btnEntrarCalendario && selectorView && calendarView && modalContent) {
         btnEntrarCalendario.addEventListener('click', () => {
             selectorView.style.display = 'none';
             calendarView.style.display = 'block';
-            modalContent.style.maxWidth = '850px'; // Agrandar para albergar el calendario iframe
+            modalContent.style.maxWidth = '850px';
             modalContent.style.height = '85vh';
         });
     }
 
-    if (btnVolverSelector && selectorView && calendarView && modalContent) {
-        btnVolverSelector.addEventListener('click', () => {
-            resetReservasModal();
-        });
+    if (btnVolverSelector) {
+        btnVolverSelector.addEventListener('click', resetReservasModal);
     }
 
-    // 7. LÓGICA DEL VÍDEO MODAL
+    // --- MODAL VÍDEO ---
     const videoTrigger = document.querySelector('.btn-video-trigger');
     const videoModal = document.getElementById('video-modal');
     const videoCloseBtn = document.getElementById('video-modal-close');
     const presentationVideo = document.getElementById('presentation-video');
 
-    function openVideoModal() {
+    function openVideoModal(triggerEl) {
         if (videoModal && presentationVideo) {
-            videoModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            openModal(videoModal, triggerEl);
             presentationVideo.currentTime = 0;
             presentationVideo.play().catch(err => console.log('Autoplay blocked:', err));
+            stopCarousel();
         }
     }
 
     function closeVideoModal() {
         if (videoModal && presentationVideo) {
-            videoModal.classList.remove('active');
-            document.body.style.overflow = '';
+            closeModal(videoModal);
             presentationVideo.pause();
+            startCarousel();
         }
     }
 
     if (videoTrigger) {
         videoTrigger.addEventListener('click', (e) => {
             e.preventDefault();
-            openVideoModal();
+            openVideoModal(videoTrigger);
         });
     }
 
@@ -186,19 +245,47 @@ document.addEventListener('DOMContentLoaded', () => {
         videoModal.addEventListener('click', (e) => {
             if (e.target === videoModal) closeVideoModal();
         });
+        videoModal.addEventListener('keydown', (e) => trapFocus(e, videoModal));
     }
 
-    // 8. LÓGICA DEL REPRODUCTOR ZEN DE MÚSICA DE FONDO (AUTOPLAY AL INTERACTUAR)
+    // --- ESCAPE KEY handler global para modales y menú ---
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            // Cerrar modal calendario
+            if (calModal && calModal.classList.contains('active')) {
+                closeModal(calModal);
+                resetReservasModal();
+                return;
+            }
+            // Cerrar modal vídeo
+            if (videoModal && videoModal.classList.contains('active')) {
+                closeVideoModal();
+                return;
+            }
+            // Cerrar menú hamburguesa
+            if (hamburger && hamburger.classList.contains('active')) {
+                closeMobileMenu();
+                hamburger.focus();
+                return;
+            }
+            // Cerrar banner cookies
+            if (cookiesBanner && cookiesBanner.classList.contains('active')) {
+                cookiesBanner.classList.remove('active');
+                cookiesBanner.setAttribute('aria-hidden', 'true');
+                return;
+            }
+        }
+    });
+
+    // 7. REPRODUCTOR ZEN DE MÚSICA DE FONDO (AUTOPLAY AL INTERACTUAR)
     const audioBtn = document.getElementById('audio-toggle-btn');
     const zenAudio = document.getElementById('zen-background-audio');
     const musicOnIcon = document.getElementById('music-on-icon');
     const musicOffIcon = document.getElementById('music-off-icon');
 
     if (audioBtn && zenAudio) {
-        // Inicializar volumen muy suave (15%) para dar atmósfera sin molestar
         zenAudio.volume = 0.15;
 
-        // Función para cambiar el estado visual del botón
         function setAudioPlayingState(isPlaying) {
             if (isPlaying) {
                 audioBtn.classList.add('playing');
@@ -211,21 +298,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Controladores para la reproducción automática en interacción
         let hasAutoPlayed = false;
 
         function tryAutoPlay() {
             if (hasAutoPlayed) return;
-
             zenAudio.play()
                 .then(() => {
                     hasAutoPlayed = true;
                     setAudioPlayingState(true);
                     removeAutoPlayListeners();
                 })
-                .catch(err => {
-                    // El navegador bloquea hasta interacción de click/scroll, reintenta en el siguiente evento
-                    console.log('Autoplay deferred:', err);
+                .catch(() => {
+                    // El navegador bloquea hasta interacción directa
                 });
         }
 
@@ -235,25 +319,19 @@ document.addEventListener('DOMContentLoaded', () => {
             document.removeEventListener('touchstart', tryAutoPlay);
         }
 
-        // Activar reproducción en la primera acción del usuario
         document.addEventListener('click', tryAutoPlay);
         document.addEventListener('scroll', tryAutoPlay);
         document.addEventListener('touchstart', tryAutoPlay);
 
-        // Control de alternado manual por botón
         audioBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Evitar que el click se propague al document
-            hasAutoPlayed = true; // Desactivar cualquier reintento de autoplay
+            e.stopPropagation();
+            hasAutoPlayed = true;
             removeAutoPlayListeners();
 
             if (zenAudio.paused) {
                 zenAudio.play()
-                    .then(() => {
-                        setAudioPlayingState(true);
-                    })
-                    .catch(err => {
-                        console.log('Audio manual play blocked:', err);
-                    });
+                    .then(() => setAudioPlayingState(true))
+                    .catch(() => {});
             } else {
                 zenAudio.pause();
                 setAudioPlayingState(false);
@@ -261,27 +339,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3.5. LÓGICA DEL CARRUSEL DE FONDO DEL HERO
+    // 8. CARRUSEL DE FONDO DEL HERO (con visibilitychange)
     const slides = document.querySelectorAll('.hero-slide');
     const dots = document.querySelectorAll('.hero-dot');
     let currentSlide = 0;
     let carouselInterval;
-    const slideDuration = 6000; // 6 segundos
+    const slideDuration = 6000;
 
     function showSlide(index) {
         if (!slides.length) return;
-        
-        // Retirar clases activas de la diapositiva e indicador actual
         slides[currentSlide].classList.remove('active');
         if (dots[currentSlide]) {
             dots[currentSlide].classList.remove('active');
             dots[currentSlide].removeAttribute('aria-current');
         }
-
-        // Actualizar índice
         currentSlide = index;
-
-        // Añadir clases activas al nuevo slide
         slides[currentSlide].classList.add('active');
         if (dots[currentSlide]) {
             dots[currentSlide].classList.add('active');
@@ -290,12 +362,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function nextSlide() {
-        let nextIndex = (currentSlide + 1) % slides.length;
-        showSlide(nextIndex);
+        showSlide((currentSlide + 1) % slides.length);
     }
 
     function startCarousel() {
-        if (slides.length > 1) {
+        if (slides.length > 1 && !prefersReducedMotion) {
             carouselInterval = setInterval(nextSlide, slideDuration);
         }
     }
@@ -303,63 +374,59 @@ document.addEventListener('DOMContentLoaded', () => {
     function stopCarousel() {
         if (carouselInterval) {
             clearInterval(carouselInterval);
+            carouselInterval = null;
         }
     }
 
-    // Inicializar carrusel
     startCarousel();
 
-    // Eventos para interactividad de los puntos de control (dots)
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             stopCarousel();
             showSlide(index);
-            startCarousel(); // Reiniciar el temporizador tras clic manual
+            startCarousel();
         });
     });
 
-    // Detener carrusel al reproducir el video de presentación (para ahorrar recursos CPU/GPU)
-    const videoTriggerBtn = document.querySelector('.btn-video-trigger');
-    const videoCloseBtnEl = document.getElementById('video-modal-close');
-    const videoOverlayEl = document.getElementById('video-modal');
+    // Pausar carrusel cuando la pestaña no está visible
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            stopCarousel();
+        } else {
+            startCarousel();
+        }
+    });
 
-    if (videoTriggerBtn) {
-        videoTriggerBtn.addEventListener('click', stopCarousel);
-    }
-    if (videoCloseBtnEl) {
-        videoCloseBtnEl.addEventListener('click', startCarousel);
-    }
-    if (videoOverlayEl) {
-        videoOverlayEl.addEventListener('click', (e) => {
-            if (e.target === videoOverlayEl) startCarousel();
-        });
-    }
-
-    // 9. LÓGICA DEL BANNER DE COOKIES INFORMATIVO
+    // 9. BANNER DE COOKIES INFORMATIVO
     const cookiesBanner = document.getElementById('cookies-banner');
     const cookiesAcceptBtn = document.getElementById('btn-cookies-accept');
     const cookiesConfigLink = document.getElementById('open-cookies-config');
 
     if (cookiesBanner && cookiesAcceptBtn) {
-        // Comprobar si ya se ha aceptado anteriormente
-        const consent = localStorage.getItem('alaya-cookies-consent');
+        let consent;
+        try {
+            consent = localStorage.getItem('yogamutilva-cookies-consent');
+        } catch (e) {
+            consent = null;
+        }
 
         if (!consent) {
-            // Esperar 1.5 segundos para mostrarlo de forma elegante
             setTimeout(() => {
                 cookiesBanner.classList.add('active');
                 cookiesBanner.setAttribute('aria-hidden', 'false');
             }, 1500);
         }
 
-        // Evento al aceptar
         cookiesAcceptBtn.addEventListener('click', () => {
-            localStorage.setItem('alaya-cookies-consent', 'accepted');
+            try {
+                localStorage.setItem('yogamutilva-cookies-consent', 'accepted');
+            } catch (e) {
+                // localStorage no disponible
+            }
             cookiesBanner.classList.remove('active');
             cookiesBanner.setAttribute('aria-hidden', 'true');
         });
 
-        // Evento al volver a abrir desde el footer (Gestión de cookies)
         if (cookiesConfigLink) {
             cookiesConfigLink.addEventListener('click', (e) => {
                 e.preventDefault();

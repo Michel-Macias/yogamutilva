@@ -1,0 +1,7 @@
+# Robots.txt - Alaya Yoga Mutilva
+User-agent: *
+Allow: /
+Disallow: /assets/audio/
+Disallow: /assets/video/
+
+Sitemap: https://michel-macias.github.io/yogamutilva/sitemap.xml

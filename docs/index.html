@@ -4,12 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alaya Yoga Mutilva | Escuela de Yoga y Bienestar</title>
+    <meta name="description" content="Alaya Yoga Mutilva: escuela de yoga, meditación, LNT® y crecimiento personal en Mutilva, Navarra. Clases de Hatha Yoga, Raja Yoga, Yoga Suave, Yoga Oncológico y terapias de bienestar integral.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://michel-macias.github.io/yogamutilva/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Alaya Yoga Mutilva | Escuela de Yoga y Bienestar">
+    <meta property="og:description" content="Tu espacio de silencio y consciencia en Mutilva. Clases de yoga, meditación, terapia LNT® y crecimiento personal.">
+    <meta property="og:url" content="https://michel-macias.github.io/yogamutilva/">
+    <meta property="og:image" content="https://michel-macias.github.io/yogamutilva/assets/img/hero_yoga.jpg">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:site_name" content="Alaya Yoga Mutilva">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Alaya Yoga Mutilva | Escuela de Yoga y Bienestar">
+    <meta name="twitter:description" content="Tu espacio de silencio y consciencia en Mutilva. Yoga, meditación y bienestar integral.">
+    <meta name="twitter:image" content="https://michel-macias.github.io/yogamutilva/assets/img/hero_yoga.jpg">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.googleapis.com https://*.gstatic.com; frame-src https://www.google.com https://yogaalaya.es; connect-src 'self'; media-src 'self';">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="preload" href="assets/img/hero_yoga.jpg" as="image">
+    <link rel="preload" href="assets/js/main.js" as="script">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "YogaStudio",
+        "name": "Alaya Yoga Mutilva",
+        "description": "Escuela de yoga, meditación y bienestar integral en Mutilva, Navarra.",
+        "url": "https://michel-macias.github.io/yogamutilva/",
+        "telephone": "+34639457793",
+        "email": "info@yogamutilva.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Paseo Santxiki 2",
+            "addressLocality": "Mutilva",
+            "addressRegion": "Navarra",
+            "postalCode": "31192",
+            "addressCountry": "ES"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 42.8021115,
+            "longitude": -1.6267869
+        },
+        "openingHoursSpecification": [
+            {"@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "18:30", "closes": "20:00"},
+            {"@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "09:30", "closes": "21:00"},
+            {"@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "18:30", "closes": "21:15"},
+            {"@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "09:30", "closes": "21:00"}
+        ],
+        "image": "https://michel-macias.github.io/yogamutilva/assets/img/hero_yoga.jpg",
+        "priceRange": "€€"
+    }
+    </script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
     <header>
         <nav>
             <div class="logo-container">
@@ -17,15 +67,16 @@
                     <img src="assets/img/logo.webp" alt="Alaya Yoga Logo" class="main-logo">
                 </a>
             </div>
-            <div class="hamburger" id="hamburger">
+            <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-expanded="false" aria-controls="nav-links" aria-label="Menú de navegación">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#conocenos">Conócenos</a></li>
-                <li><a href="#practicas">Prácticas</a></li>
                 <li><a href="#lnt">LNT®</a></li>
+                <li><a href="#crecimiento-emocional">Crecimiento</a></li>
+                <li><a href="#practicas">Prácticas</a></li>
                 <li><a href="#horarios">Horarios</a></li>
                 <li><a href="#tarifas">Tarifas</a></li>
                 <li><a href="#alquiler">Alquiler</a></li>
@@ -35,7 +86,7 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <!-- HERO -->
         <section id="hero">
             <!-- Contenedor de Diapositivas en segundo plano -->
@@ -152,24 +203,88 @@
         </section>
 
         <!-- LNT -->
-        <section id="lnt" class="reveal bg-alt" style="padding: 80px 0;">
-            <div class="container" style="max-width: 1000px; margin: 0 auto; text-align: center; padding: 0 20px;">
-                <h2 style="color: var(--contrast); font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; margin-bottom: 20px;">La Terapia LNT® (La Nueva Terapia)</h2>
-                <p style="font-size: 1.15rem; line-height: 1.8; color: #555; margin-bottom: 35px; font-family: 'Montserrat', sans-serif;">
+        <section id="lnt" class="reveal bg-alt lnt-section">
+            <div class="lnt-container">
+                <h2>La Terapia LNT® (La Nueva Terapia)</h2>
+                <p class="lnt-description">
                     Un sistema de sanación cuántica que equilibra el cuerpo físico, emocional y espiritual. 
                     A través de la conexión con la Fuente, liberamos bloqueos y restauramos el flujo vital para una salud integral.
                 </p>
-                <div class="lnt-cards-container" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 40px;">
-                    <div style="flex: 1; min-width: 280px; padding: 25px; background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                        <h4 style="color: var(--contrast); font-size: 1.3rem; margin-bottom: 15px; font-family: 'Cormorant Garamond', serif; font-weight: 600;">Sanación Física</h4>
-                        <p style="font-size: 0.95rem; color: #666; line-height: 1.6;">Alivio de dolencias crónicas, dolores musculares y articulares, y fortalecimiento del sistema inmunológico.</p>
+                <div class="lnt-cards-container">
+                    <div class="lnt-card">
+                        <h3>Sanación Física</h3>
+                        <p>Alivio de dolencias crónicas, dolores musculares y articulares, y fortalecimiento del sistema inmunológico.</p>
                     </div>
-                    <div style="flex: 1; min-width: 280px; padding: 25px; background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                        <h4 style="color: var(--contrast); font-size: 1.3rem; margin-bottom: 15px; font-family: 'Cormorant Garamond', serif; font-weight: 600;">Equilibrio Emocional</h4>
-                        <p style="font-size: 0.95rem; color: #666; line-height: 1.6;">Liberación de traumas, ansiedad, fobias y estrés acumulado en nuestro cuerpo energético y memoria celular.</p>
+                    <div class="lnt-card">
+                        <h3>Equilibrio Emocional</h3>
+                        <p>Liberación de traumas, ansiedad, fobias y estrés acumulado en nuestro cuerpo energético y memoria celular.</p>
                     </div>
                 </div>
-                <button class="cta-button btn-reservar-trigger" style="border:none; cursor:pointer;">Pide cita LNT®</button>
+                <button class="cta-button btn-reservar-trigger">Pide cita LNT®</button>
+            </div>
+        </section>
+
+        <!-- ESPACIO PEDRO - CRECIMIENTO Y GESTIÓN EMOCIONAL -->
+        <section id="crecimiento-emocional" class="reveal">
+            <div class="pedro-container">
+                <h2 class="pedro-main-title">Crecimiento Personal y Gestión Emocional</h2>
+                <h3 class="pedro-subtitle">El Espacio de Pedro Aranguren</h3>
+                
+                <div class="pedro-intro-container">
+                    <div class="pedro-intro-text">
+                        <p>
+                            Bienvenido a un espacio de autoconocimiento y calma mental dentro de la escuela Alaya, liderado por <strong>Pedro Aranguren</strong>. Con más de 30 años de experiencia profesional en el campo del desarrollo personal y la inteligencia emocional, Pedro ha dedicado su trayectoria a guiar a las personas a navegar las complejidades emocionales tanto en su vida diaria como en el ámbito laboral.
+                        </p>
+                        <p>
+                            Fusionando la sabiduría tradicional del yoga mental (<em>Raja Yoga</em>) con herramientas prácticas occidentales de psicología aplicada y gestión del estrés, este espacio ofrece un enfoque accesible y empático para recuperar las riendas de tu bienestar interior.
+                        </p>
+                    </div>
+                    <div class="pedro-intro-image">
+                        <div class="pedro-image-wrapper">
+                            <img src="assets/img/pedro.webp" alt="Pedro Aranguren, Coach de Inteligencia Emocional y Coordinador de Alaya Yoga Mutilva">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pedro-services-grid">
+                    <!-- Tarjeta 1 -->
+                    <div class="pedro-service-card">
+                        <div class="pedro-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-13h-2v6h6v-2h-4V7z"/></svg>
+                        </div>
+                        <h4>Inteligencia Emocional y Mindfulness</h4>
+                        <p>
+                            Sesiones individuales y grupales para desarrollar las claves de la Inteligencia Emocional: autoconciencia, autogestión, empatía y autocuidado. Aprende a meditar y a observar tu mente para responder con claridad en lugar de reaccionar de forma automática.
+                        </p>
+                    </div>
+                    <!-- Tarjeta 2 -->
+                    <div class="pedro-service-card">
+                        <div class="pedro-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.07 19.58 10.48 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+                        </div>
+                        <h4>Gestión del Estrés y Ansiedad</h4>
+                        <p>
+                            Sesiones de acompañamiento y asesoramiento personalizadas. Adquiere herramientas y hábitos diarios de prevención y afrontamiento del estrés laboral o personal para equilibrar tus responsabilidades con tu salud y descanso vital.
+                        </p>
+                    </div>
+                    <!-- Tarjeta 3 -->
+                    <div class="pedro-service-card">
+                        <div class="pedro-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                        </div>
+                        <h4>Autoprotección y Apoyo en Crisis</h4>
+                        <p>
+                            Formación y entrenamiento especializado para colectivos profesionales y de atención directa de alta tensión (sanitarios, educadores, trabajadores sociales). Técnicas de mediación, comunicación asertiva y dinámicas de contención y equilibrio emocional.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pedro-cta-container">
+                    <a href="https://wa.me/34639457793?text=Hola%20Pedro!%20Me%20gustaría%20saber%20más%20sobre%20tus%20sesiones%20individuales%20y%20talleres%20de%20Gestión%20Emocional%20en%20Alaya%20Yoga." target="_blank" class="cta-button" aria-label="Contactar con Pedro por WhatsApp para consulta de gestión emocional o crecimiento personal">
+                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: currentColor; margin-right: 8px; vertical-align: middle;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.668.149-.198.297-.767.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        Consultar con Pedro
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -209,14 +324,15 @@
         <section id="horarios" class="reveal">
             <h2>Horarios de Clases</h2>
             <div class="table-responsive">
-                <table class="schedule-table">
+                <table class="schedule-table" role="table" aria-label="Horarios semanales de clases de yoga">
+                    <caption class="sr-only">Horarios de clases de yoga en Alaya Yoga Mutilva organizados por día de la semana</caption>
                     <thead>
                         <tr>
-                            <th>Lunes</th>
-                            <th>Martes</th>
-                            <th>Miércoles</th>
-                            <th>Jueves</th>
-                            <th>Viernes</th>
+                            <th scope="col">Lunes</th>
+                            <th scope="col">Martes</th>
+                            <th scope="col">Miércoles</th>
+                            <th scope="col">Jueves</th>
+                            <th scope="col">Viernes</th>
                         </tr>
                     </thead>
                     <tbody>
