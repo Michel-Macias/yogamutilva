@@ -967,3 +967,284 @@ footer {
     }
 }
 
+/* --- ALQUILER DE SALA PREMIUM --- */
+.alquiler-section {
+    padding: 6rem 1.5rem;
+    background-color: var(--bg-alt);
+    width: 100%;
+}
+
+.alquiler-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    gap: 3.5rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+/* Columna Izquierda (42%) */
+.alquiler-info-column {
+    flex: 1.2;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.alquiler-title {
+    font-size: 2.8rem;
+    color: var(--contrast);
+    margin-bottom: 0.5rem;
+    font-family: var(--serif);
+}
+
+.alquiler-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background: var(--primary);
+    margin: 0.8rem 0 0 0;
+}
+
+.alquiler-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text);
+    font-weight: 400;
+}
+
+.alquiler-subtitle {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    color: var(--contrast);
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.alquiler-desc {
+    font-size: 0.98rem;
+    color: #666;
+    line-height: 1.7;
+}
+
+.alquiler-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    margin-top: 1rem;
+}
+
+.alquiler-feature-card {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.03);
+    border-radius: 16px;
+    padding: 1.2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.alquiler-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(95, 113, 97, 0.08);
+    border-color: rgba(95, 113, 97, 0.15);
+}
+
+.feature-icon {
+    background: var(--bg-alt);
+    color: var(--contrast);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.8rem;
+    transition: all 0.4s ease;
+}
+
+.alquiler-feature-card:hover .feature-icon {
+    background: var(--primary);
+    color: var(--white);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.alquiler-feature-card h4 {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    color: var(--contrast);
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+}
+
+.alquiler-feature-card p {
+    font-size: 0.82rem;
+    color: #777;
+    line-height: 1.5;
+}
+
+.alquiler-cta-container {
+    margin-top: 1.5rem;
+}
+
+.btn-alquiler-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 1.2rem 2.5rem;
+    background-color: var(--contrast);
+    color: var(--white) !important;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(95, 113, 97, 0.2);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-alquiler-cta:hover {
+    background-color: var(--primary);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(244, 164, 96, 0.35);
+}
+
+/* Columna Derecha - Galería Bento (58%) */
+.alquiler-gallery-column {
+    flex: 1.6;
+    min-width: 320px;
+    width: 100%;
+}
+
+.alquiler-bento-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 200px 200px 200px;
+    gap: 20px;
+    width: 100%;
+}
+
+.bento-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    background: #000; /* Fondo negro para mejor contraste del zoom */
+}
+
+.bento-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s ease;
+    filter: brightness(0.95);
+}
+
+/* Posiciones Bento */
+.bento-item-long {
+    grid-column: span 2;
+}
+
+.bento-item-big {
+    grid-row: span 2;
+}
+
+.bento-item-small {
+    /* Toma tamaño estándar 1x1 */
+}
+
+/* Movimiento y vida en hover (Bento Grid) */
+.bento-item:hover {
+    transform: translateY(-6px) scale(1.015);
+    box-shadow: 0 20px 40px rgba(95, 113, 97, 0.12);
+    z-index: 5;
+}
+
+.bento-item:hover img {
+    transform: scale(1.08); /* Suave zoom zen */
+    filter: brightness(0.85); /* Oscurece un poco para que resalte más el texto */
+}
+
+/* Capa de texto emergente elegante (Gives life) */
+.alquiler-photo-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(253, 245, 230, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 8px 18px;
+    border-radius: 30px;
+    color: var(--contrast);
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    font-weight: 600;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.bento-item:hover .alquiler-photo-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Media Queries Responsivas */
+@media (max-width: 1024px) {
+    .alquiler-container {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .alquiler-info-column, .alquiler-gallery-column {
+        flex: 1;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .alquiler-section {
+        padding: 4rem 1rem;
+    }
+    
+    .alquiler-title {
+        font-size: 2.3rem;
+    }
+    
+    .alquiler-features-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .alquiler-bento-gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 15px;
+    }
+    
+    .bento-item-long, .bento-item-big {
+        grid-column: auto;
+        grid-row: auto;
+        height: 230px;
+    }
+    
+    .bento-item-small {
+        height: 200px;
+    }
+    
+    .alquiler-photo-overlay {
+        opacity: 1;
+        transform: translateY(0);
+        bottom: 15px;
+        left: 15px;
+        font-size: 0.85rem;
+        padding: 6px 14px;
+    }
+}
+

@@ -28,6 +28,7 @@
                 <li><a href="#lnt">LNT®</a></li>
                 <li><a href="#horarios">Horarios</a></li>
                 <li><a href="#tarifas">Tarifas</a></li>
+                <li><a href="#alquiler">Alquiler</a></li>
                 <li><a href="javascript:void(0)" class="btn-reservar-trigger">Reservas</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
@@ -305,40 +306,96 @@
         </section>
 
         <!-- ALQUILER DE SALA -->
-        <section id="alquiler" class="bg-alt reveal" style="padding: 80px 0;">
-            <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
-                <h2 style="color: var(--contrast); font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; text-align: center; margin-bottom: 20px;">Alquiler de Sala</h2>
-                <p class="intro-text" style="text-align: center; max-width: 750px; margin: 0 auto 40px; font-size: 1.1rem; line-height: 1.7; color: #555;">
-                    Nuestra acogedora sala en Alaya Yoga está disponible para talleres, formaciones, terapias, charlas u otras actividades afines al bienestar y crecimiento personal. Un espacio amplio, lleno de luz natural, cálido y completamente equipado en Mutilva.
-                </p>
-                
-                <div class="alquiler-grid" style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap; margin-bottom: 40px;">
-                    <div style="flex: 1.2; min-width: 320px;">
-                        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--contrast); margin-bottom: 15px;">Un espacio de luz y silencio</h3>
-                        <p style="font-size: 1rem; line-height: 1.8; color: #666; margin-bottom: 20px;">
-                            Equipada con esterillas, bloques, mantas, zafus y un ambiente diseñado para transmitir tranquilidad, la sala ofrece la atmósfera ideal para conectar con el silencio y la consciencia. Cuenta con excelente ventilación, climatización y fácil acceso.
-                        </p>
-                        <ul class="benefits" style="list-style: none; padding: 0; margin-bottom: 30px;">
-                            <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
-                                <span style="color: var(--primary); font-size: 1.2rem; font-weight: bold;">✓</span> Excelente iluminación natural y ventilación.
-                            </li>
-                            <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
-                                <span style="color: var(--primary); font-size: 1.2rem; font-weight: bold;">✓</span> Material de yoga disponible (esterillas, mantas, cojines).
-                            </li>
-                            <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
-                                <span style="color: var(--primary); font-size: 1.2rem; font-weight: bold;">✓</span> Ubicación céntrica y de fácil aparcamiento en Mutilva.
-                            </li>
-                        </ul>
-                        <a href="https://wa.me/34639457793?text=Hola%20Pedro!%20Me%20gustaría%20saber%20más%20sobre%20la%20disponibilidad%20y%20tarifas%20para%20alquilar%20la%20sala%20de%20Alaya%20Yoga." target="_blank" class="cta-button" style="text-decoration:none; display:inline-flex; align-items:center; gap:10px; background:var(--contrast); color:white; border:none; cursor:pointer;">
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.668.149-.198.297-.767.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        <section id="alquiler" class="alquiler-section reveal">
+            <div class="alquiler-container">
+                <!-- Columna Izquierda: Información de Valor -->
+                <div class="alquiler-info-column">
+                    <h2 class="alquiler-title">Alquiler de Sala</h2>
+                    <p class="alquiler-intro">
+                        Nuestra acogedora escuela Alaya Yoga está disponible para talleres, formaciones, terapias, charlas u otras actividades afines al bienestar y crecimiento personal. Un espacio amplio, lleno de luz natural, cálido y completamente equipado en Mutilva.
+                    </p>
+                    
+                    <h3 class="alquiler-subtitle">Un espacio de luz y silencio</h3>
+                    <p class="alquiler-desc">
+                        Equipada con esterillas, bloques, mantas, zafus y un ambiente diseñado para transmitir tranquilidad, la sala ofrece la atmósfera ideal para conectar con el silencio y la consciencia. Cuenta con excelente ventilación, climatización y fácil acceso.
+                    </p>
+                    
+                    <!-- Grid de Características Técnicas -->
+                    <div class="alquiler-features-grid">
+                        <!-- Luz Natural -->
+                        <div class="alquiler-feature-card">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41s-1.02-.39-1.41 0zm-12.37 12.37l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0z"/></svg>
+                            </div>
+                            <h4>Luz y Ventilación</h4>
+                            <p>Iluminación natural generosa y ventilación cruzada óptima en todo el espacio.</p>
+                        </div>
+                        <!-- Material completo -->
+                        <div class="alquiler-feature-card">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.07 19.58 10.48 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+                            </div>
+                            <h4>Material de Yoga</h4>
+                            <p>Esterillas, bloques de corcho, mantas, zafus y cojines de alta calidad a tu disposición.</p>
+                        </div>
+                        <!-- Parking & Ubicación -->
+                        <div class="alquiler-feature-card">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            </div>
+                            <h4>Fácil Acceso</h4>
+                            <p>Ubicación inmejorable en Mutilva con excelente zona de aparcamiento gratuito.</p>
+                        </div>
+                        <!-- Climatización zen -->
+                        <div class="alquiler-feature-card">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15.93V19c0 .55-.45 1-1 1s-1-.45-1-1v-1.07c-2.31-.22-4.24-1.89-4.75-4.14-.13-.54.22-1.07.77-1.07.45 0 .82.31.91.75.36 1.62 1.8 2.82 3.53 2.92.51.03.95.03 1.46 0 1.73-.1 3.17-1.3 3.53-2.92.09-.44.46-.75.91-.75.55 0 .9.53.77 1.07-.51 2.25-2.44 3.92-4.75 4.14zM12 13c-1.66 0-3-1.34-3-3V5c0-1.66 1.34-3 3-3s3 1.34 3 3v5c0 1.66-1.34 3-3 3z"/></svg>
+                            </div>
+                            <h4>Confort Acústico</h4>
+                            <p>Espacio totalmente insonorizado y climatizado para garantizar el silencio.</p>
+                        </div>
+                    </div>
+
+                    <!-- Botón de CTA Potenciado -->
+                    <div class="alquiler-cta-container">
+                        <a href="https://wa.me/34639457793?text=Hola%20Pedro!%20Me%20gustaría%20saber%20más%20sobre%20la%20disponibilidad%20y%20tarifas%20para%20alquilar%20la%20sala%20de%20Alaya%20Yoga." target="_blank" class="cta-button btn-alquiler-cta" aria-label="Consultar disponibilidad de alquiler de sala por WhatsApp">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.668.149-.198.297-.767.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                             Consultar Disponibilidad
                         </a>
                     </div>
-                    <div class="alquiler-images-grid" style="flex: 1; min-width: 320px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
-                        <img src="assets/img/escuela.jpeg" alt="Instalaciones de Alaya Yoga Mutilva" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s ease;">
-                        <img src="assets/img/escuela1.jpeg" alt="Sala amplia y luminosa de yoga" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s ease;">
-                        <img src="assets/img/escuela2.jpeg" alt="Detalle iluminación y materiales de yoga" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s ease;">
-                        <img src="assets/img/escuela3.jpeg" alt="Acceso y recepción del centro Alaya Yoga" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s ease;">
+                </div>
+                
+                <!-- Columna Derecha: Galería Bento de Alto Impacto -->
+                <div class="alquiler-gallery-column">
+                    <div class="alquiler-bento-gallery">
+                        <!-- Item 1: Entrada/Recepción (Largo Horizontal) -->
+                        <div class="bento-item bento-item-long">
+                            <img src="assets/img/escuela3.jpeg" alt="Acceso y recepción acogedora del centro Alaya Yoga">
+                            <div class="alquiler-photo-overlay">
+                                <span>Recepción y Acceso</span>
+                            </div>
+                        </div>
+                        <!-- Item 2: Sala Principal Grande (Gran Foco) -->
+                        <div class="bento-item bento-item-big">
+                            <img src="assets/img/escuela1.jpeg" alt="Sala de práctica amplia, luminosa y equipada de yoga">
+                            <div class="alquiler-photo-overlay">
+                                <span>Nuestra Sala de Silencio</span>
+                            </div>
+                        </div>
+                        <!-- Item 3: Detalles de Materiales (Cuadrado Chico) -->
+                        <div class="bento-item bento-item-small">
+                            <img src="assets/img/escuela2.jpeg" alt="Detalle del material de yoga, zafus y luz cálida">
+                            <div class="alquiler-photo-overlay">
+                                <span>Materiales y Confort</span>
+                            </div>
+                        </div>
+                        <!-- Item 4: Vista General de la Escuela (Cuadrado Chico) -->
+                        <div class="bento-item bento-item-small">
+                            <img src="assets/img/escuela.jpeg" alt="Perspectiva de las instalaciones de Alaya Yoga Mutilva">
+                            <div class="alquiler-photo-overlay">
+                                <span>Un Santuario de Calma</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
