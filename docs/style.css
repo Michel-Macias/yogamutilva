@@ -662,16 +662,21 @@ footer {
 
 .modal-close {
     position: absolute;
-    top: -5px;
-    right: 10px;
+    top: 15px;
+    right: 20px;
     background: transparent;
     border: none;
-    color: var(--bg);
-    font-size: 2.5rem;
+    color: var(--contrast);
+    font-size: 2.2rem;
     cursor: pointer;
     z-index: 10;
-    font-weight: bold;
-    text-shadow: 0 0 10px white;
+    transition: color 0.3s ease, transform 0.3s ease;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: var(--primary);
+    transform: scale(1.1);
 }
 
 .modal-body {
