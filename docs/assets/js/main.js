@@ -172,12 +172,29 @@ document.addEventListener('DOMContentLoaded', () => {
             modalContent.style.maxWidth = '700px';
             modalContent.style.height = 'auto';
         }
+        const selectEl = document.getElementById('modal-docente-select');
+        if (selectEl) {
+            selectEl.value = '';
+            selectEl.dispatchEvent(new Event('change'));
+        }
     }
 
     reservationTriggers.forEach(trigger => {
         trigger.addEventListener('click', (e) => {
             e.preventDefault();
             openModal(calModal, trigger);
+            
+            // Lógica de preselección contextual del docente
+            const targetDocente = trigger.getAttribute('data-docente');
+            const selectEl = document.getElementById('modal-docente-select');
+            if (selectEl) {
+                if (targetDocente) {
+                    selectEl.value = targetDocente;
+                } else {
+                    selectEl.value = ''; // Por defecto selecciona el placeholder
+                }
+                selectEl.dispatchEvent(new Event('change'));
+            }
         });
     });
 
@@ -207,6 +224,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (btnVolverSelector) {
         btnVolverSelector.addEventListener('click', resetReservasModal);
+    }
+
+    // --- LÓGICA DE WHATSAPP DINÁMICO EN EL MODAL ---
+    const docenteSelect = document.getElementById('modal-docente-select');
+    const waDocenteBtn = document.getElementById('btn-whatsapp-docente');
+    const waDocenteText = document.getElementById('text-whatsapp-docente');
+
+    if (docenteSelect && waDocenteBtn && waDocenteText) {
+        docenteSelect.addEventListener('change', () => {
+            const selectedOption = docenteSelect.options[docenteSelect.selectedIndex];
+            
+            if (selectedOption && selectedOption.value) {
+                const phone = selectedOption.getAttribute('data-phone');
+                const name = selectedOption.getAttribute('data-name');
+                const className = selectedOption.getAttribute('data-class');
+                
+                // Mensaje personalizado
+                const text = encodeURIComponent(`¡Hola ${name}! Me gustaría obtener información sobre tu clase o sesión de ${className} y sobre cómo reservar.`);
+                
+                // Habilitar botón de WhatsApp
+                waDocenteBtn.href = `https://wa.me/${phone}?text=${text}`;
+                waDocenteBtn.classList.remove('disabled-button');
+                waDocenteBtn.style.cursor = 'pointer';
+                waDocenteBtn.style.pointerEvents = 'auto';
+                waDocenteBtn.style.opacity = '1';
+                waDocenteBtn.style.background = 'var(--contrast)';
+                
+                waDocenteText.textContent = `Contactar con ${name}`;
+            } else {
+                // Deshabilitar botón de WhatsApp
+                waDocenteBtn.href = 'javascript:void(0)';
+                waDocenteBtn.classList.add('disabled-button');
+                waDocenteBtn.style.cursor = 'not-allowed';
+                waDocenteBtn.style.pointerEvents = 'none';
+                waDocenteBtn.style.opacity = '0.5';
+                waDocenteBtn.style.background = '#888';
+                
+                waDocenteText.textContent = 'Selecciona una opción';
+            }
+        });
     }
 
     // --- MODAL VÍDEO ---

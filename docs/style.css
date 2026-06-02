@@ -1668,6 +1668,28 @@ footer {
     }
 }
 
+/* --- RESERVATION SELECTOR ZEN & DISABLED --- */
+#modal-docente-select {
+    border: 1px solid rgba(95, 113, 97, 0.3) !important;
+    color: var(--contrast) !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
+
+#modal-docente-select:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 3px rgba(244, 164, 96, 0.15);
+}
+
+.disabled-button {
+    background-color: #a0a8a2 !important;
+    opacity: 0.7 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
 /* --- PRINT STYLESHEET --- */
 @media print {
     body {
