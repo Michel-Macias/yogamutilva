@@ -790,7 +790,7 @@ footer {
     background-color: var(--primary);
     border-radius: 50%;
     pointer-events: none;
-    z-index: 9999;
+    z-index: 999999;
     mix-blend-mode: multiply;
     animation: cursorPulse 2.5s infinite ease-in-out;
 }
@@ -805,7 +805,7 @@ footer {
     background-color: var(--contrast);
     border-radius: 50%;
     pointer-events: none;
-    z-index: 10000;
+    z-index: 1000000;
 }
 
 .cursor-hover {
@@ -1693,6 +1693,74 @@ footer {
     pointer-events: none !important;
     box-shadow: none !important;
     transform: none !important;
+}
+
+/* --- TESTIMONIOS STYLES --- */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 3rem auto 0;
+}
+
+.testimonials-grid blockquote {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    border-left: 4px solid var(--primary);
+    position: relative;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    font-style: italic;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonials-grid blockquote:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(95, 113, 97, 0.08);
+}
+
+.testimonials-grid blockquote::before {
+    content: "“";
+    font-family: var(--serif);
+    font-size: 4rem;
+    color: var(--primary);
+    opacity: 0.15;
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
+    line-height: 1;
+}
+
+.testimonials-grid cite {
+    display: block;
+    margin-top: 1.2rem;
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--contrast);
+    font-weight: 600;
+    font-style: normal;
+    text-align: right;
+}
+
+@media (min-width: 768px) {
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 /* --- PRINT STYLESHEET --- */
