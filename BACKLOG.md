@@ -38,6 +38,12 @@
 - [x] **Horarios:** Tabla depurada y corregida según la petición de Mario (se le retiró del viernes tarde, quedando su perfil limpio y exacto como Raja Yoga y Quiromasajista).
 - [x] **Nueva Laura:** Añadida como Terapeuta de Reiki y Péndulo Hebreo (646 581 781). Bio y foto integradas.
 
+### 🏁 Ajustes de Entrega Final (05/06/2026)
+- [x] **Seguridad y Copyright de Vídeo:** Silenciado físico del vídeo de presentación mediante FFMPEG (remoción de pista ambiental protegida por derechos de autor) e invalidación de caché (renombrado a `video_pedro_v2.mp4` en HTML y disco) para evitar que los navegadores sirvan la versión antigua.
+- [x] **Depuración de Testimonios (Salida de Mauri):** Se ha modificado el panel de testimonios para dejar una única reseña en representación de Mauri. Se integraron nuevas experiencias de Paula y valoraciones generales adaptadas. Se diseñó la grid de testimonios responsiva a 1, 2 y 3 columnas con efecto hover 3D.
+- [ ] **Enlace de Dominio en Nominalia (Pendiente):** Quedando a la espera de recibir el código o acceso de parte de Mauri para configurar y apuntar el dominio personalizado (`www.yogamutilva.com`).
+
 ---
 *Nex-OS: Fase de Reestructuración Técnica, Conversión y Optimización Evolutiva COMPLETADA al 100%.*
+
 
