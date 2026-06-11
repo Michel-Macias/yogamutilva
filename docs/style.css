@@ -2015,12 +2015,19 @@ footer {
 .tabs-nav-wrapper {
     width: 100%;
     overflow-x: auto;
-    margin-top: 3rem;
+    margin-top: 0;
     margin-bottom: 2.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none;  /* IE 10+ */
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    position: sticky;
+    top: 65px; /* Offset for the fixed header */
+    z-index: 100;
+    background-color: var(--bg-alt);
+    -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
 }
 
 .tabs-nav-wrapper::-webkit-scrollbar {
@@ -2059,6 +2066,7 @@ footer {
     cursor: pointer;
     transition: all 0.3s ease;
     text-transform: capitalize;
+    flex-shrink: 0;
 }
 
 .tab-btn:hover {
