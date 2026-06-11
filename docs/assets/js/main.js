@@ -334,11 +334,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 7. REPRODUCTOR ZEN DE MÚSICA DE FONDO (AUTOPLAY AL INTERACTUAR)
+    // 7. REPRODUCTOR ZEN DE MÚSICA DE FONDO (ACTIVADO EXCLUSIVAMENTE POR EL USUARIO)
     const audioBtn = document.getElementById('audio-toggle-btn');
     const zenAudio = document.getElementById('zen-background-audio');
     const musicOnIcon = document.getElementById('music-on-icon');
     const musicOffIcon = document.getElementById('music-off-icon');
+    const audioTooltip = document.querySelector('.zen-audio-tooltip');
 
     if (audioBtn && zenAudio) {
         zenAudio.volume = 0.15;
@@ -355,35 +356,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        let hasAutoPlayed = false;
-
-        function tryAutoPlay() {
-            if (hasAutoPlayed) return;
-            zenAudio.play()
-                .then(() => {
-                    hasAutoPlayed = true;
-                    setAudioPlayingState(true);
-                    removeAutoPlayListeners();
-                })
-                .catch(() => {
-                    // El navegador bloquea hasta interacción directa
-                });
+        // Mostrar tooltip transcurridos 1.5s de la carga y ocultarlo a los 8s
+        if (audioTooltip) {
+            setTimeout(() => {
+                if (zenAudio.paused) {
+                    audioTooltip.classList.add('visible');
+                }
+            }, 1500);
+            setTimeout(() => {
+                audioTooltip.classList.remove('visible');
+            }, 8000);
         }
-
-        function removeAutoPlayListeners() {
-            document.removeEventListener('click', tryAutoPlay);
-            document.removeEventListener('scroll', tryAutoPlay);
-            document.removeEventListener('touchstart', tryAutoPlay);
-        }
-
-        document.addEventListener('click', tryAutoPlay);
-        document.addEventListener('scroll', tryAutoPlay);
-        document.addEventListener('touchstart', tryAutoPlay);
 
         audioBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            hasAutoPlayed = true;
-            removeAutoPlayListeners();
+            if (audioTooltip) {
+                audioTooltip.classList.remove('visible');
+            }
 
             if (zenAudio.paused) {
                 zenAudio.play()
@@ -405,6 +394,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showSlide(index) {
         if (!slides.length) return;
+        
+        // Cargar imagen de fondo bajo demanda (lazy loading de diapositivas)
+        const nextSlide = slides[index];
+        if (nextSlide && nextSlide.dataset.bg) {
+            nextSlide.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('${nextSlide.dataset.bg}')`;
+            nextSlide.removeAttribute('data-bg');
+        }
+        
         slides[currentSlide].classList.remove('active');
         if (dots[currentSlide]) {
             dots[currentSlide].classList.remove('active');

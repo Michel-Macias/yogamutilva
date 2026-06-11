@@ -295,17 +295,18 @@ nav {
 .cta-button {
     display: inline-block;
     padding: 1.2rem 2.5rem;
-    background-color: var(--primary);
+    background-color: #A64B17;
     color: var(--white);
     text-decoration: none;
     border-radius: 50px;
-    font-weight: 500;
+    font-weight: 600;
     transition: all 0.3s ease;
 }
 
 .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(244, 164, 96, 0.3);
+    background-color: #8C3E11;
+    box-shadow: 0 10px 20px rgba(166, 75, 23, 0.25);
 }
 
 /* --- SECTIONS --- */
@@ -912,32 +913,81 @@ footer {
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: var(--contrast);
+    background: #A64B17; /* Terracota llamativo y cálido para invitar a pulsar */
     color: var(--white);
     border: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 15px rgba(166, 75, 23, 0.3);
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 #audio-toggle-btn:hover {
     transform: scale(1.1);
-    background: var(--primary);
-    box-shadow: 0 8px 25px rgba(244, 164, 96, 0.3);
+    background: #8C3E11;
+    box-shadow: 0 8px 25px rgba(166, 75, 23, 0.4);
 }
 
 #audio-toggle-btn.playing {
-    background: var(--primary);
+    background: var(--contrast); /* Pasa a verde sage relajante cuando suena */
     animation: musicPulse 2s infinite ease-in-out;
 }
 
 @keyframes musicPulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(244, 164, 96, 0.6); }
-    50% { box-shadow: 0 0 0 15px rgba(244, 164, 96, 0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(95, 113, 97, 0.6); }
+    50% { box-shadow: 0 0 0 15px rgba(95, 113, 97, 0); }
 }
+
+/* Zen Audio Tooltip */
+.zen-audio-tooltip {
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+    background: #3d4e41; /* Verde oscuro que combina con la paleta */
+    color: var(--white);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    border: 1px solid rgba(244, 164, 96, 0.3);
+    z-index: 1000;
+    font-family: var(--sans);
+}
+
+/* Flecha del tooltip */
+.zen-audio-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -5px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 8px;
+    height: 8px;
+    background: #3d4e41;
+    border-right: 1px solid rgba(244, 164, 96, 0.3);
+    border-top: 1px solid rgba(244, 164, 96, 0.3);
+}
+
+/* Mostrar tooltip al pasar el cursor */
+#zen-audio-player:hover .zen-audio-tooltip {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* Estado activo visible inicialmente */
+.zen-audio-tooltip.visible {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
 
 /* Modificaciones responsive para Alquiler */
 @media (max-width: 768px) {
@@ -1063,13 +1113,14 @@ footer {
 }
 
 .cookies-btn-primary {
-    background: var(--primary);
+    background: #A64B17;
     color: var(--white);
 }
 
 .cookies-btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(244, 164, 96, 0.3);
+    background-color: #8C3E11;
+    box-shadow: 0 5px 15px rgba(166, 75, 23, 0.25);
 }
 
 @media (max-width: 768px) {
@@ -1399,7 +1450,7 @@ footer {
 .pedro-subtitle {
     font-family: var(--serif);
     font-size: 1.5rem;
-    color: var(--primary);
+    color: #A64B17;
     font-weight: normal;
     margin-bottom: 3rem;
     text-align: center;
