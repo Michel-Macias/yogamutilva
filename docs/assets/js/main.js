@@ -492,4 +492,140 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+    // --- 10. SISTEMA DE PESTAÑAS INTERACTIVAS (#actividades) ---
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    function activateTab(tabId) {
+        const tabButton = document.getElementById(tabId);
+        if (!tabButton) return;
+        const targetId = tabButton.getAttribute('aria-controls');
+        
+        tabButtons.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+        });
+        
+        tabPanels.forEach(p => {
+            p.classList.remove('active');
+        });
+        
+        tabButton.classList.add('active');
+        tabButton.setAttribute('aria-selected', 'true');
+        
+        const targetPanel = document.getElementById(targetId);
+        if (targetPanel) {
+            targetPanel.classList.add('active');
+        }
+        
+        // Centrar botón activo en móviles (desplazamiento horizontal)
+        const navWrapper = document.querySelector('.tabs-nav-wrapper');
+        if (navWrapper) {
+            const wrapperLeft = navWrapper.getBoundingClientRect().left;
+            const buttonLeft = tabButton.getBoundingClientRect().left;
+            const scrollOffset = buttonLeft - wrapperLeft - (navWrapper.clientWidth / 2) + (tabButton.clientWidth / 2);
+            navWrapper.scrollBy({ left: scrollOffset, behavior: 'smooth' });
+        }
+    }
+
+    if (tabButtons.length > 0) {
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                activateTab(btn.id);
+            });
+        });
+
+        // Interceptar transiciones de hash o clicks a pestañas de actividades
+        function checkHashForTab() {
+            const hash = window.location.hash;
+            if (!hash) return;
+            
+            const cleanHash = hash.substring(1);
+            let targetTabId = null;
+            
+            if (cleanHash.startsWith('panel-')) {
+                targetTabId = cleanHash.replace('panel-', 'tab-');
+            } else if (cleanHash.startsWith('tab-')) {
+                targetTabId = cleanHash;
+            } else {
+                const potentialTab = document.getElementById(`tab-${cleanHash}`);
+                if (potentialTab) {
+                    targetTabId = `tab-${cleanHash}`;
+                }
+            }
+            
+            if (targetTabId && document.getElementById(targetTabId)) {
+                activateTab(targetTabId);
+                const section = document.getElementById('actividades');
+                if (section) {
+                    setTimeout(() => {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }, 50);
+                }
+            }
+        }
+
+        // Ejecutar al cargar la página si hay hash
+        window.addEventListener('load', checkHashForTab);
+        window.addEventListener('hashchange', checkHashForTab);
+
+        // Interceptar clicks en enlaces locales a actividades/paneles
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                const href = anchor.getAttribute('href');
+                if (!href || href === '#' || href.startsWith('#tab-') || href === '#actividades') return;
+                
+                const targetId = href.substring(1);
+                if (targetId.startsWith('panel-') || document.getElementById(`tab-${targetId}`)) {
+                    e.preventDefault();
+                    const tabId = targetId.startsWith('panel-') ? targetId.replace('panel-', 'tab-') : `tab-${targetId}`;
+                    activateTab(tabId);
+                    
+                    const section = document.getElementById('actividades');
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    history.pushState(null, null, href);
+                }
+            });
+        });
+    }
+
+    // --- 11. SCROLLSPY (Resaltado de Navegación) ---
+    const spySections = document.querySelectorAll('#conocenos, #actividades, #horarios-tarifas, #alquiler, #contacto');
+    const spyNavItems = document.querySelectorAll('.nav-links li a');
+
+    if (spySections.length > 0 && spyNavItems.length > 0) {
+        const spyObserverOptions = {
+            root: null,
+            rootMargin: '-30% 0px -60% 0px', // Activar cuando esté en el tercio central
+            threshold: 0
+        };
+
+        const spyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    spyNavItems.forEach(item => {
+                        const href = item.getAttribute('href');
+                        if (href === `#${id}`) {
+                            item.classList.add('active');
+                        } else if (href !== 'javascript:void(0)' && href !== '#') {
+                            item.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        }, spyObserverOptions);
+
+        spySections.forEach(section => spyObserver.observe(section));
+
+        // Quitar active cuando estemos en el hero o arriba del todo
+        window.addEventListener('scroll', () => {
+            if (window.scrollY < 100) {
+                spyNavItems.forEach(item => item.classList.remove('active'));
+            }
+        });
+    }
 });

@@ -192,7 +192,8 @@ nav {
     transition: color 0.3s ease;
 }
 
-.nav-links li a:hover {
+.nav-links li a:hover,
+.nav-links li a.active {
     color: var(--primary);
 }
 
@@ -409,6 +410,20 @@ h2::after {
 .team-social a[title="Instagram"]:hover { color: var(--instagram); }
 .team-social a[title="Email"]:hover { color: var(--primary); }
 .team-social a[title="Reservar"]:hover { color: var(--primary); }
+
+.team-card .bio a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 1.5px dashed var(--primary);
+    padding-bottom: 1px;
+}
+
+.team-card .bio a:hover {
+    color: var(--contrast);
+    border-bottom: 1.5px solid var(--contrast);
+}
 
 /* --- TERAPIA LNT® SECTION --- */
 #lnt h2::after {
@@ -724,7 +739,8 @@ footer {
         background: var(--primary);
         transition: width 0.3s ease;
     }
-    .nav-links li a:hover::after {
+    .nav-links li a:hover::after,
+    .nav-links li a.active::after {
         width: 100%;
     }
     
@@ -1870,18 +1886,244 @@ footer {
     object-fit: cover;
 }
 
-@media (max-width: 768px) {
-    #novedades {
-        padding: 4rem 1rem;
+/* --- UNIFIED ACTIVITIES & TABS SYSTEM --- */
+#actividades {
+    padding: 6rem 1.5rem;
+}
+
+.actividades-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.actividades-tabs-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+@media (min-width: 1025px) {
+    .actividades-tabs-wrapper {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 3rem;
+        align-items: start;
+        margin-top: 3rem;
     }
     
-    .novedades-card {
-        padding: 1.8rem;
+    .tabs-nav-wrapper {
+        position: sticky;
+        top: 100px;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        justify-content: flex-start;
     }
     
-    .novedades-card h3 {
-        font-size: 1.5rem;
+    .tabs-nav {
+        flex-direction: column;
+        align-items: stretch;
+        background: transparent !important;
+        border: none !important;
+        border-right: 2px solid rgba(244, 164, 96, 0.15) !important;
+        border-radius: 0 !important;
+        padding: 0 1.5rem 0 0 !important;
+        white-space: normal !important;
+        gap: 0.5rem !important;
+        width: 100% !important;
     }
+    
+    .tab-btn {
+        width: 100% !important;
+        text-align: left !important;
+        border-radius: 12px !important;
+        padding: 0.9rem 1.4rem !important;
+        font-weight: 500 !important;
+        border: 1px solid rgba(0,0,0,0.03) !important;
+        background: var(--white) !important;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.01) !important;
+        justify-content: flex-start !important;
+    }
+    
+    .tab-btn:hover {
+        background: rgba(244, 164, 96, 0.05) !important;
+        color: var(--primary) !important;
+        border-color: rgba(244, 164, 96, 0.2) !important;
+        transform: translateX(3px) !important;
+    }
+    
+    .tab-btn.active {
+        background: var(--primary) !important;
+        color: var(--white) !important;
+        border-color: var(--primary) !important;
+        box-shadow: 0 5px 15px rgba(244, 164, 96, 0.2) !important;
+        transform: translateX(6px) !important;
+    }
+}
+
+/* Horizontal scrollable wrapper for tabs on mobile */
+.tabs-nav-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 3rem;
+    margin-bottom: 2.5rem;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+    display: flex;
+    justify-content: center;
+}
+
+.tabs-nav-wrapper::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}
+
+.tabs-nav {
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(244, 164, 96, 0.08); /* Sutil tinte primario */
+    padding: 0.4rem;
+    border-radius: 50px;
+    white-space: nowrap;
+    border: 1px solid rgba(244, 164, 96, 0.15);
+}
+
+@media (max-width: 1024px) {
+    .tabs-nav-wrapper {
+        justify-content: flex-start;
+        padding-bottom: 5px;
+    }
+    .tabs-nav {
+        border-radius: 30px;
+    }
+}
+
+.tab-btn {
+    border: none;
+    background: transparent;
+    padding: 0.8rem 1.6rem;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--contrast);
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: capitalize;
+}
+
+.tab-btn:hover {
+    color: var(--primary);
+}
+
+.tab-btn.active {
+    background: var(--primary);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(244, 164, 96, 0.25);
+}
+
+/* Tab content and panels */
+.tabs-content {
+    position: relative;
+    min-height: 400px;
+}
+
+.tab-panel {
+    display: none;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.tab-panel.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.activity-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: left;
+    align-items: center;
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.03);
+}
+
+@media (min-width: 768px) {
+    .activity-detail-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+    }
+}
+
+.activity-text h3 {
+    font-size: 2.2rem;
+    color: var(--contrast);
+    margin-bottom: 0.5rem;
+}
+
+.activity-text .tagline {
+    font-size: 1.1rem;
+    color: var(--primary);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    font-family: var(--serif);
+    font-style: italic;
+}
+
+.activity-text p {
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+}
+
+.activity-meta {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: var(--bg-alt);
+    border-left: 4px solid var(--primary);
+    border-radius: 4px 12px 12px 4px;
+    font-size: 0.95rem;
+}
+
+.activity-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.activity-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+/* Secondary CTA Style */
+.secondary-cta {
+    background: transparent;
+    color: var(--contrast);
+    border: 1px solid rgba(244, 164, 96, 0.4);
+}
+
+.secondary-cta:hover {
+    background: rgba(244, 164, 96, 0.05);
+    box-shadow: none;
+    border-color: var(--primary);
+}
+
+/* --- HORARIOS Y TARIFAS COMBINED --- */
+#horarios-tarifas {
+    padding: 6rem 1.5rem;
+}
+
+.tarifas-container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* --- PRINT STYLESHEET --- */
