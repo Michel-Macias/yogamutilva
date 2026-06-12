@@ -587,6 +587,54 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
+
+        // --- SWIPE GESTURES PARA PESTAÑAS EN MÓVIL ---
+        const tabsContentContainer = document.querySelector('.tabs-content');
+        if (tabsContentContainer) {
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            tabsContentContainer.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            tabsContentContainer.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+
+            function handleSwipe() {
+                // Solo activamos gestos en versión móvil/tablet (< 1024px)
+                if (window.innerWidth > 1024) return;
+                
+                const swipeThreshold = 50;
+                const diffX = touchEndX - touchStartX;
+
+                if (Math.abs(diffX) < swipeThreshold) return; // Ignore small swipes
+
+                // Encontrar el índice de la pestaña activa actual
+                let currentIndex = -1;
+                tabButtons.forEach((btn, index) => {
+                    if (btn.classList.contains('active')) {
+                        currentIndex = index;
+                    }
+                });
+
+                if (currentIndex === -1) return;
+
+                if (diffX < 0) {
+                    // Swipe a la izquierda -> Siguiente pestaña
+                    if (currentIndex < tabButtons.length - 1) {
+                        activateTab(tabButtons[currentIndex + 1].id);
+                    }
+                } else {
+                    // Swipe a la derecha -> Pestaña anterior
+                    if (currentIndex > 0) {
+                        activateTab(tabButtons[currentIndex - 1].id);
+                    }
+                }
+            }
+        }
     }
 
     // --- 11. SCROLLSPY (Resaltado de Navegación) ---
