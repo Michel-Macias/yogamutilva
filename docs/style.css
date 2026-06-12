@@ -133,6 +133,32 @@ nav {
     background: rgba(253, 245, 230, 0.65); /* Un poco más opaco al hacer scroll, pero aún translúcido */
 }
 
+@media (max-width: 767px) {
+    .header-scrolled nav {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        padding: 0 0.5rem !important;
+        justify-content: flex-end;
+        pointer-events: none;
+    }
+
+    .header-scrolled .hamburger {
+        pointer-events: auto;
+        background: rgba(253, 245, 230, 0.9);
+        padding: 12px;
+        border-radius: 50%;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        border: 1px solid rgba(244, 164, 96, 0.3);
+    }
+
+    .header-scrolled .logo-container {
+        display: none !important;
+    }
+}
+
 .logo-container {
     max-width: 70px;
 }
