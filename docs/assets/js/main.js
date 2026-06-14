@@ -266,43 +266,84 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- MODAL VÍDEO ---
-    const videoTrigger = document.querySelector('.btn-video-trigger');
-    const videoModal = document.getElementById('video-modal');
-    const videoCloseBtn = document.getElementById('video-modal-close');
+    // --- MODAL VÍDEO PRINCIPAL ---
+    const mainVideoTrigger = document.querySelector('.btn-video-trigger');
+    const mainVideoModal = document.getElementById('video-modal');
+    const mainVideoCloseBtn = document.getElementById('video-modal-close');
     const presentationVideo = document.getElementById('presentation-video');
 
-    function openVideoModal(triggerEl) {
-        if (videoModal && presentationVideo) {
-            openModal(videoModal, triggerEl);
+    function openMainVideoModal(triggerEl) {
+        if (mainVideoModal && presentationVideo) {
+            openModal(mainVideoModal, triggerEl);
             presentationVideo.currentTime = 0;
             presentationVideo.play().catch(err => console.log('Autoplay blocked:', err));
             stopCarousel();
         }
     }
 
-    function closeVideoModal() {
-        if (videoModal && presentationVideo) {
-            closeModal(videoModal);
+    function closeMainVideoModal() {
+        if (mainVideoModal && presentationVideo) {
+            closeModal(mainVideoModal);
             presentationVideo.pause();
             startCarousel();
         }
     }
 
-    if (videoTrigger) {
-        videoTrigger.addEventListener('click', (e) => {
+    if (mainVideoTrigger) {
+        mainVideoTrigger.addEventListener('click', (e) => {
             e.preventDefault();
-            openVideoModal(videoTrigger);
+            openMainVideoModal(mainVideoTrigger);
         });
     }
 
-    if (videoCloseBtn) videoCloseBtn.addEventListener('click', closeVideoModal);
+    if (mainVideoCloseBtn) mainVideoCloseBtn.addEventListener('click', closeMainVideoModal);
 
-    if (videoModal) {
-        videoModal.addEventListener('click', (e) => {
-            if (e.target === videoModal) closeVideoModal();
+    if (mainVideoModal) {
+        mainVideoModal.addEventListener('click', (e) => {
+            if (e.target === mainVideoModal) closeMainVideoModal();
         });
-        videoModal.addEventListener('keydown', (e) => trapFocus(e, videoModal));
+        mainVideoModal.addEventListener('keydown', (e) => trapFocus(e, mainVideoModal));
+    }
+
+    // --- MODAL VÍDEO RETIROS ---
+    const retirosVideoTrigger = document.getElementById('video-retiros-trigger');
+    const retirosVideoModal = document.getElementById('retiros-video-modal');
+    const retirosVideoCloseBtn = document.getElementById('close-video-modal');
+    const retirosVideo = document.getElementById('retiros-video-element');
+
+    function openRetirosVideoModal(triggerEl) {
+        if (retirosVideoModal && retirosVideo) {
+            openModal(retirosVideoModal, triggerEl);
+            retirosVideoModal.style.display = 'flex';
+            retirosVideo.currentTime = 0;
+            retirosVideo.play().catch(err => console.log('Autoplay blocked:', err));
+            stopCarousel();
+        }
+    }
+
+    function closeRetirosVideoModal() {
+        if (retirosVideoModal && retirosVideo) {
+            closeModal(retirosVideoModal);
+            retirosVideoModal.style.display = 'none';
+            retirosVideo.pause();
+            startCarousel();
+        }
+    }
+
+    if (retirosVideoTrigger) {
+        retirosVideoTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            openRetirosVideoModal(retirosVideoTrigger);
+        });
+    }
+
+    if (retirosVideoCloseBtn) retirosVideoCloseBtn.addEventListener('click', closeRetirosVideoModal);
+
+    if (retirosVideoModal) {
+        retirosVideoModal.addEventListener('click', (e) => {
+            if (e.target === retirosVideoModal) closeRetirosVideoModal();
+        });
+        retirosVideoModal.addEventListener('keydown', (e) => trapFocus(e, retirosVideoModal));
     }
 
     // --- ESCAPE KEY handler global para modales y menú ---
@@ -314,9 +355,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 resetReservasModal();
                 return;
             }
-            // Cerrar modal vídeo
-            if (videoModal && videoModal.classList.contains('active')) {
-                closeVideoModal();
+            // Cerrar modal vídeo principal
+            if (mainVideoModal && mainVideoModal.classList.contains('active')) {
+                closeMainVideoModal();
+                return;
+            }
+            // Cerrar modal vídeo retiros
+            if (retirosVideoModal && retirosVideoModal.classList.contains('active')) {
+                closeRetirosVideoModal();
                 return;
             }
             // Cerrar menú hamburguesa
