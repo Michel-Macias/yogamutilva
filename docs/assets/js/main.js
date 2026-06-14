@@ -639,13 +639,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tabsContentContainer) {
             let touchStartX = 0;
             let touchEndX = 0;
+            let touchStartY = 0;
+            let touchEndY = 0;
 
             tabsContentContainer.addEventListener('touchstart', e => {
                 touchStartX = e.changedTouches[0].screenX;
+                touchStartY = e.changedTouches[0].screenY;
             }, { passive: true });
 
             tabsContentContainer.addEventListener('touchend', e => {
                 touchEndX = e.changedTouches[0].screenX;
+                touchEndY = e.changedTouches[0].screenY;
                 handleSwipe();
             }, { passive: true });
 
@@ -653,9 +657,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Solo activamos gestos en versión móvil/tablet (< 1024px)
                 if (window.innerWidth > 1024) return;
                 
-                const swipeThreshold = 50;
+                const swipeThreshold = 120;
                 const diffX = touchEndX - touchStartX;
+                const diffY = touchEndY - touchStartY;
 
+                // Si el movimiento vertical es mayor que el horizontal, ignoramos (es scroll para leer)
+                if (Math.abs(diffY) > Math.abs(diffX)) return;
                 if (Math.abs(diffX) < swipeThreshold) return; // Ignore small swipes
 
                 // Encontrar el índice de la pestaña activa actual
