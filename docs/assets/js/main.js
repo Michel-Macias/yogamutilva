@@ -96,12 +96,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const isActive = hamburger.classList.toggle('active');
         navLinks.classList.toggle('active');
         hamburger.setAttribute('aria-expanded', String(isActive));
+        document.body.style.overflow = isActive ? 'hidden' : '';
     }
 
     function closeMobileMenu() {
         hamburger.classList.remove('active');
         navLinks.classList.remove('active');
         hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
     }
 
     if (hamburger && navLinks) {

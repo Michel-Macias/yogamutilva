@@ -184,7 +184,11 @@ header.header-scrolled nav {
 
 .nav-links {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    height: 100dvh;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
@@ -195,7 +199,7 @@ header.header-scrolled nav {
     -webkit-backdrop-filter: blur(18px);
     transform: translateX(100%);
     transition: transform 0.45s var(--ease);
-    padding: 7rem 2rem 3rem 2rem;
+    padding: 7rem 2rem 5rem 2rem;
     list-style: none;
     display: flex;
     z-index: 1000;
@@ -204,6 +208,10 @@ header.header-scrolled nav {
 }
 .nav-links.active {
     transform: translateX(0);
+}
+.nav-links li {
+    flex-shrink: 0;
+    width: 100%;
 }
 .nav-links li a {
     text-decoration: none;
@@ -794,7 +802,12 @@ footer {
         padding: 0;
         gap: 1.7rem;
         width: auto;
+        height: auto;
+        overflow-y: visible;
         z-index: auto;
+    }
+    .nav-links li {
+        width: auto;
     }
     .nav-links li a {
         position: relative;
