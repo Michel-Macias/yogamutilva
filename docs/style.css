@@ -748,17 +748,27 @@ footer {
     right: 20px;
     background: transparent;
     border: none;
+    outline: none;
     color: var(--contrast);
     font-size: 2.2rem;
     cursor: pointer;
     z-index: 10;
     transition: color 0.3s ease, transform 0.3s ease;
     line-height: 1;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.modal-close:hover {
+.modal-close:hover,
+.modal-close:focus {
     color: var(--primary);
     transform: scale(1.1);
+    outline: none;
+    background: rgba(43, 38, 48, 0.05);
 }
 
 .modal-body {
@@ -2571,7 +2581,20 @@ footer {
 .faq-body p { color: var(--text-muted); font-size: 0.96rem; }
 
 /* --- Modal Choice Highlight --- */
-.choice--highlight { background: var(--white); border: 2px solid var(--plum) !important; box-shadow: var(--shadow-sm); position: relative; }
+.choice {
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 2rem 1.8rem;
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.choice--highlight { 
+    background: var(--white); 
+    border: 2px solid var(--plum) !important; 
+    box-shadow: var(--shadow-sm); 
+    position: relative; 
+    border-radius: var(--radius);
+}
 .choice-badge {
     position: absolute; top: -11px; left: 1.4rem; background: var(--plum); color: #fff;
     font-size: 0.66rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
