@@ -222,6 +222,7 @@ header.header-scrolled nav {
     border-radius: 999px;
     display: inline-block;
     font-size: 1.1rem;
+    text-transform: none !important;
 }
 .nav-links .nav-cta:hover {
     background: var(--plum-deep);
@@ -817,6 +818,7 @@ footer {
         border-radius: 999px;
         font-size: 0.82rem;
         display: inline-block;
+        text-transform: none !important;
     }
     .nav-links .nav-cta::after {
         display: none;
