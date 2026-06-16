@@ -20,10 +20,11 @@ Puedes ver el proyecto en vivo aquí:
 - **Interacciones:** JavaScript ES6+ (Animaciones de inercia, Parallax orgánico).
 - **Despliegue:** GitHub Pages con flujo de trabajo optimizado.
 
-## 🎨 Identidad Visual
-- **Primario:** `#F4A460` (Azafrán Sanctuary)
-- **Fondo:** `#FDF5E6` (Lino Orgánico)
-- **Contraste:** `#4A5D4E` (Verde Bosque Profundo)
+## 🎨 Identidad Visual (Plum & Sage Zen)
+- **Primario (Malva):** `#6E4E78` (Plum) / `#4C3556` (Plum Deep)
+- **Fondo (Lino del Alba):** `#F4EEE9` (Bone) / `#ECE6EC` (Bone Alternative)
+- **Contraste/Secundario (Salvia):** `#6F8C81` (Sage) / `#51695F` (Sage Deep)
+
 
 ---
 **Director del Proyecto:** Michel Macias  

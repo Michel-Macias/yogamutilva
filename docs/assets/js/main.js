@@ -705,7 +705,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 11. SCROLLSPY (Resaltado de Navegación) ---
-    const spySections = document.querySelectorAll('#conocenos, #actividades, #horarios-tarifas, #alquiler, #contacto');
+    const spySections = document.querySelectorAll('#conocenos, #actividades, #horarios, #tarifas, #alquiler, #contacto');
     const spyNavItems = document.querySelectorAll('.nav-links li a');
 
     if (spySections.length > 0 && spyNavItems.length > 0) {
