@@ -25,39 +25,88 @@
     <link rel="stylesheet" href="style.css?v=1.2.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="preload" href="assets/img/hero_yoga.webp" as="image">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="assets/img/hero_yoga.webp" as="image" fetchpriority="high">
     <link rel="preload" href="assets/js/main.js?v=1.2.0" as="script">
+    
+    <!-- Datos estructurados: negocio local (SEO) -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "YogaStudio",
-        "name": "Alaya Yoga Mutilva",
-        "description": "Escuela de yoga, meditación y bienestar integral en Mutilva, Navarra.",
-        "url": "https://michel-macias.github.io/yogamutilva/",
-        "telephone": "+34639457793",
-        "email": "info@yogamutilva.com",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Paseo Santxiki 2",
-            "addressLocality": "Mutilva",
-            "addressRegion": "Navarra",
-            "postalCode": "31192",
-            "addressCountry": "ES"
+      "@context": "https://schema.org",
+      "@type": ["LocalBusiness", "HealthAndBeautyBusiness", "YogaStudio"],
+      "name": "Alaya Yoga Mutilva",
+      "description": "Escuela de yoga, meditación, terapia LNT® y bienestar integral en Mutilva, Navarra.",
+      "image": "https://www.yogamutilva.com/assets/img/hero_yoga.webp",
+      "telephone": "+34639457793",
+      "email": "info@yogamutilva.com",
+      "priceRange": "€€",
+      "url": "https://www.yogamutilva.com/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Paseo Santxiki 2",
+        "addressLocality": "Mutilva",
+        "addressRegion": "Navarra",
+        "postalCode": "31192",
+        "addressCountry": "ES"
+      },
+      "geo": { 
+        "@type": "GeoCoordinates", 
+        "latitude": 42.8021115, 
+        "longitude": -1.6267869 
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "18:30", "closes": "20:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "09:30", "closes": "21:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "18:30", "closes": "21:15"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "09:30", "closes": "21:00"}
+      ],
+      "sameAs": [
+        "https://www.instagram.com/alayayogamutilva",
+        "https://www.facebook.com/alayayogamutilva",
+        "https://www.youtube.com/channel/UC5V5OOfSoKQHdz8uadv84Cw"
+      ]
+    }
+    </script>
+
+    <!-- Datos estructurados: preguntas frecuentes (SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Puedo probar una clase antes de apuntarme?",
+          "acceptedAnswer": { 
+            "@type": "Answer", 
+            "text": "Sí. Ofrecemos una clase de prueba de 90 minutos por 15€. Escríbenos por WhatsApp a coordinación para reservar tu plaza." 
+          }
         },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 42.8021115,
-            "longitude": -1.6267869
+        {
+          "@type": "Question",
+          "name": "¿Dónde está la escuela y hay aparcamiento?",
+          "acceptedAnswer": { 
+            "@type": "Answer", 
+            "text": "Estamos en Paseo Santxiki 2, Mutilva (Navarra), una ubicación céntrica con fácil aparcamiento." 
+          }
         },
-        "openingHoursSpecification": [
-            {"@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "18:30", "closes": "20:00"},
-            {"@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "09:30", "closes": "21:00"},
-            {"@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "18:30", "closes": "21:15"},
-            {"@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "09:30", "closes": "21:00"}
-        ],
-        "image": "https://michel-macias.github.io/yogamutilva/assets/img/hero_yoga.webp",
-        "priceRange": "€€"
+        {
+          "@type": "Question",
+          "name": "¿Qué horarios y modalidades de yoga hay?",
+          "acceptedAnswer": { 
+            "@type": "Answer", 
+            "text": "Impartimos Yoga Suave, Raja Yoga y Meditación de lunes a jueves en horarios de mañana y tarde, además de Hatha Yoga, Yoga Oncológico, terapia LNT® y Reiki. Consulta la tabla de horarios en la web." 
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo reservo una clase?",
+          "acceptedAnswer": { 
+            "@type": "Answer", 
+            "text": "Si ya eres alumno activo, accede al calendario de reservas. Si eres nuevo o quieres una clase de prueba, escribe al WhatsApp de coordinación y te ayudamos a empezar." 
+          }
+        }
+      ]
     }
     </script>
 </head>
@@ -70,18 +119,19 @@
                     <img src="assets/img/logo.webp" alt="Alaya Yoga Logo" class="main-logo" width="160" height="80">
                 </a>
             </div>
-            <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-expanded="false" aria-controls="nav-links" aria-label="Menú de navegación">
+            <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="nav-links" aria-label="Menú de navegación">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#conocenos">Conócenos</a></li>
                 <li><a href="#actividades">Actividades</a></li>
-                <li><a href="#horarios-tarifas">Horarios y Tarifas</a></li>
+                <li><a href="#horarios">Horarios</a></li>
+                <li><a href="#tarifas">Tarifas</a></li>
                 <li><a href="#alquiler">Alquiler de Sala</a></li>
-                <li><a href="#reserva" class="btn-reservar-trigger">Reservas</a></li>
                 <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#reserva" class="nav-cta btn-reservar-trigger">Reservar</a></li>
             </ul>
         </nav>
     </header>
@@ -94,6 +144,18 @@
                 <div class="hero-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('assets/img/hero_yoga.webp');" role="img" aria-label="Persona practicando yoga en ambiente sereno"></div>
                 <div class="hero-slide" data-bg="assets/img/escuela1.webp" role="img" aria-label="Sala amplia y luminosa de yoga en Alaya Mutilva"></div>
                 <div class="hero-slide" data-bg="assets/img/escuela2.webp" role="img" aria-label="Detalle de materiales de yoga, zafus y velas en el centro"></div>
+            </div>
+
+            <!-- Respiración Enso flotante zen -->
+            <div class="breath" aria-hidden="true">
+                <svg viewBox="0 0 200 200">
+                    <circle class="ring" cx="100" cy="100" r="78" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.4"></circle>
+                    <circle class="ring ring-2" cx="100" cy="100" r="78" fill="none" stroke="rgba(221,200,218,0.7)" stroke-width="1"></circle>
+                </svg>
+                <div class="breath-label">
+                    <span class="inhala">inhala</span>
+                    <span class="exhala">exhala</span>
+                </div>
             </div>
 
             <div class="hero-content">
@@ -113,6 +175,44 @@
                 <button class="hero-dot active" data-slide="0" aria-label="Ver imagen 1" aria-current="true"></button>
                 <button class="hero-dot" data-slide="1" aria-label="Ver imagen 2"></button>
                 <button class="hero-dot" data-slide="2" aria-label="Ver imagen 3"></button>
+            </div>
+        </section>
+
+        <!-- TRUST BAR (Barra de Confianza) -->
+        <aside class="trustbar" aria-label="Por qué elegir Alaya Yoga">
+            <div class="trustbar-inner">
+                <div class="trust-item">
+                    <strong>Clase de prueba 15€</strong>
+                    <span>90 min, sin compromiso</span>
+                </div>
+                <div class="trust-item">
+                    <strong>Grupos reducidos</strong>
+                    <span>Trato cercano y personal</span>
+                </div>
+                <div class="trust-item">
+                    <strong>Mutilva · Navarra</strong>
+                    <span>Céntrico y fácil aparcar</span>
+                </div>
+                <div class="trust-item">
+                    <strong>Equipo titulado</strong>
+                    <span>Yoga, meditación y terapias</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ===================== FILOSOFÍA ===================== -->
+        <section class="section philo reveal" id="filosofia">
+            <div class="container">
+                <span class="eyebrow">El nombre</span>
+                <div class="word">ālaya</div>
+                <div class="pron">del sánscrito · morada, refugio, hogar</div>
+                <blockquote>
+                    La misma raíz que habita en <em>Himā·laya</em>, “la morada de las nieves”. Alaya es el lugar donde regresas a ti: un hogar interior de quietud, al que vuelves clase tras clase.
+                </blockquote>
+                <p class="sign">— La práctica como camino de vuelta a uno mismo</p>
+                <div class="divider" aria-hidden="true">
+                    <svg viewBox="0 0 44 44"><path d="M22 4 A18 18 0 1 1 9 9" fill="none" stroke="#6E4E78" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
             </div>
         </section>
 
@@ -526,124 +626,201 @@
             </div> <!-- Fin .actividades-container -->
         </section>
 
-        <!-- HORARIOS Y TARIFAS -->
-        <section id="horarios-tarifas" class="reveal">
-            <h2>Horarios y Tarifas</h2>
-            <p class="intro-text">Encuentra el horario que mejor se adapte a tu ritmo y consulta nuestras tarifas mensuales y trimestrales.</p>
-            
-            <!-- Horarios -->
-            <div class="table-responsive">
-                <table class="schedule-table" role="table" aria-label="Horarios semanales de clases de yoga">
-                    <caption class="sr-only">Horarios de clases de yoga en Alaya Yoga Mutilva organizados por día de la semana</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">Lunes</th>
-                            <th scope="col">Martes</th>
-                            <th scope="col">Miércoles</th>
-                            <th scope="col">Jueves</th>
-                            <th scope="col">Viernes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Mañanas -->
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <strong>Yoga Integral Online (Mauri)</strong><br>7h – 8.30h
-                            </td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>
-                                <strong>Yoga Suave (Carmen)</strong><br>09:30 - 11:00
-                            </td>
-                            <td>
-                                <strong>Yoga Suave (Carmen)</strong><br>09:30 - 11:00
-                            </td>
-                            <td>
-                                <strong>Yoga Suave (Carmen)</strong><br>09:30 - 11:00
-                            </td>
-                            <td></td>
-                        </tr>
-                        <!-- Tarde Primera -->
-                        <tr>
-                            <td></td>
-                            <td>
-                                <strong>Yoga Oncológico (Paula)</strong><br>16:30 - 17:45
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <!-- Tarde Segunda -->
-                        <tr>
-                            <td>
-                                <strong>Hatha Yoga (Mario)</strong><br>17:00 - 18:30
-                            </td>
-                            <td>
-                                <strong>Hatha Yoga (Mario)</strong><br>18:00 - 19:30
-                            </td>
-                            <td>
-                                <strong>Hatha Yoga (Mario)</strong><br>17:00 - 18:30
-                            </td>
-                            <td>
-                                <strong>Hatha Yoga (Mario)</strong><br>18:00 - 19:30
-                            </td>
-                            <td></td>
-                        </tr>
-                        <!-- Tarde-Noche -->
-                        <tr>
-                            <td>
-                                <strong>Hatha Yoga (Mario)</strong><br>18:30 - 20:00
-                            </td>
-                            <td>
-                                <strong>Hatha Yoga (Mario)</strong><br>19:30 - 21:00
-                            </td>
-                            <td>
-                                <strong>Hatha Yoga (Mario)</strong><br>18:30 - 20:00
-                            </td>
-                            <td>
-                                <strong>Hatha Yoga (Mario)</strong><br>19:30 - 21:00
-                            </td>
-                            <td></td>
-                        </tr>
-                        <!-- Noche -->
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <strong>Iniciación a la Meditación<br>Conocimiento Ciencia del Yoga (Pedro)</strong><br>20:15 - 21:30
-                            </td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Tarifas -->
-            <div class="tarifas-container" style="margin-top: 3rem;">
-                <div class="tarifas-grid">
-                    <div class="tarifa-card">
-                        <h3>1 día / semana</h3>
-                        <p class="price">45€<span>/mes</span></p>
-                        <p class="trimestre">130€ / trimestre</p>
+        <!-- HORARIOS -->
+        <section id="horarios" class="section section--alt reveal">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Cuándo practicamos</span>
+                    <h2>Horarios de clases</h2>
+                    <p>Encuentra el horario que mejor acompañe tu ritmo y práctica diaria.</p>
+                </div>
+                <div class="schedule">
+                    <div class="sched-table-wrap">
+                        <table class="sched-table" role="table" aria-label="Horarios semanales de clases de yoga">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Lunes</th>
+                                    <th scope="col">Martes</th>
+                                    <th scope="col">Miércoles</th>
+                                    <th scope="col">Jueves</th>
+                                    <th scope="col">Viernes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Fila 1: Mañanas temprano -->
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <div class="slot medi">
+                                            <span class="name">Yoga Integral Online · Mauri</span>
+                                            <span class="time">07:00 – 08:30</span>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <!-- Fila 2: Mañanas -->
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <div class="slot suave">
+                                            <span class="name">Yoga Suave · Carmen</span>
+                                            <span class="time">09:30 – 11:00</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slot suave">
+                                            <span class="name">Yoga Suave · Carmen</span>
+                                            <span class="time">09:30 – 11:00</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slot suave">
+                                            <span class="name">Yoga Suave · Carmen</span>
+                                            <span class="time">09:30 – 11:00</span>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <!-- Fila 3: Tardes 1 -->
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <div class="slot suave">
+                                            <span class="name">Yoga Oncológico · Paula</span>
+                                            <span class="time">16:30 – 17:45</span>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <!-- Fila 4: Tardes 2 (Hatha Mario grupo A) -->
+                                <tr>
+                                    <td>
+                                        <div class="slot raja">
+                                            <span class="name">Hatha Yoga · Mario</span>
+                                            <span class="time">17:00 – 18:30</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slot raja">
+                                            <span class="name">Hatha Yoga · Mario</span>
+                                            <span class="time">18:00 – 19:30</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slot raja">
+                                            <span class="name">Hatha Yoga · Mario</span>
+                                            <span class="time">17:00 – 18:30</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slot raja">
+                                            <span class="name">Hatha Yoga · Mario</span>
+                                            <span class="time">18:00 – 19:30</span>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <!-- Fila 5: Tardes 3 (Hatha Mario grupo B) -->
+                                <tr>
+                                    <td>
+                                        <div class="slot raja">
+                                            <span class="name">Hatha Yoga · Mario</span>
+                                            <span class="time">18:30 – 20:00</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slot raja">
+                                            <span class="name">Hatha Yoga · Mario</span>
+                                            <span class="time">19:30 – 21:00</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slot raja">
+                                            <span class="name">Hatha Yoga · Mario</span>
+                                            <span class="time">18:30 – 20:00</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slot raja">
+                                            <span class="name">Hatha Yoga · Mario</span>
+                                            <span class="time">19:30 – 21:00</span>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <!-- Fila 6: Noches (Meditación) -->
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <div class="slot medi">
+                                            <span class="name">Meditación · Pedro</span>
+                                            <span class="time">20:15 – 21:30</span>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="tarifa-card featured">
-                        <h3>2 días / semana</h3>
-                        <p class="price">65€<span>/mes</span></p>
-                        <p class="trimestre">185€ / trimestre</p>
-                    </div>
-                    <div class="tarifa-card">
-                        <h3>3 días / semana</h3>
-                        <p class="price">85€<span>/mes</span></p>
-                        <p class="trimestre">245€ / trimestre</p>
+                    <div class="sched-legend">
+                        <span><i style="background:var(--sage)"></i> Yoga Suave / Oncológico</span>
+                        <span><i style="background:var(--plum)"></i> Hatha Yoga</span>
+                        <span><i style="background:var(--dusk)"></i> Meditación / Online</span>
                     </div>
                 </div>
-                <p class="clase-prueba">Clase de prueba: 15€ (90 min)</p>
+            </div>
+        </section>
+
+        <!-- TARIFAS -->
+        <section id="tarifas" class="section reveal">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Cuotas</span>
+                    <h2>Tarifas</h2>
+                    <p>Grupos reducidos y trato cercano. Elige el ritmo que mejor acompañe tu práctica.</p>
+                </div>
+                <div class="price-grid">
+                    <div class="price">
+                        <h3>1 día / semana</h3>
+                        <p class="amount">45€<span>/mes</span></p>
+                        <p class="tri">130€ / trimestre</p>
+                        <div class="pbtn">
+                            <button class="cta-button btn-reservar-trigger" style="border:none; cursor:pointer; width:100%;">Reservar</button>
+                        </div>
+                    </div>
+                    <div class="price featured">
+                        <span class="pill">Más elegida</span>
+                        <h3>2 días / semana</h3>
+                        <p class="amount">65€<span>/mes</span></p>
+                        <p class="tri">185€ / trimestre</p>
+                        <div class="pbtn">
+                            <button class="cta-button btn-reservar-trigger btn--light" style="border:none; cursor:pointer; width:100%; background:var(--white); color:var(--plum-deep);">Reservar</button>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <h3>3 días / semana</h3>
+                        <p class="amount">85€<span>/mes</span></p>
+                        <p class="tri">245€ / trimestre</p>
+                        <div class="pbtn">
+                            <button class="cta-button btn-reservar-trigger" style="border:none; cursor:pointer; width:100%;">Reservar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trial-cta">
+                    <div class="trial-cta-text">
+                        <span class="eyebrow">Tu primer paso</span>
+                        <h3>¿Primera vez? Prueba una clase por 15€</h3>
+                        <p>90 minutos para sentir el espacio, sin compromiso. Si te gusta, te ayudamos a elegir tu cuota.</p>
+                    </div>
+                    <button class="cta-button btn-reservar-trigger" style="border:none; cursor:pointer;">Reservar clase de prueba</button>
+                </div>
             </div>
         </section>
 
@@ -676,6 +853,42 @@
                     "Las clases de yoga oncológico con Paula son una maravilla. No es fácil hacer una clase en la que todas las que vamos, cada una con sus circunstancias, nos sintamos tan cuidadas y guiadas."
                     <cite>— Mari Carmen Garste</cite>
                 </blockquote>
+            </div>
+        </section>
+
+        <!-- PREGUNTAS FRECUENTES (FAQ) -->
+        <section id="faq" class="section reveal" style="padding: 5rem 1.5rem;">
+            <div class="container container--narrow">
+                <div class="section-head">
+                    <span class="eyebrow" style="margin-bottom:1rem;">Antes de empezar</span>
+                    <h2>Preguntas frecuentes</h2>
+                </div>
+                <div class="faq">
+                    <details class="faq-item">
+                        <summary>¿Puedo probar una clase antes de apuntarme?</summary>
+                        <div class="faq-body">
+                            <p>Sí. Ofrecemos una clase de prueba de 90 minutos por 15€, sin compromiso. Escríbenos por WhatsApp a coordinación y te ayudamos a reservar tu plaza.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>¿Dónde estáis y hay aparcamiento?</summary>
+                        <div class="faq-body">
+                            <p>Estamos en Paseo Santxiki 2, Mutilva (Navarra), una ubicación céntrica con fácil aparcamiento gratuito en las inmediaciones. Tienes el mapa en el pie de página.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>¿Qué horarios y modalidades de yoga hay?</summary>
+                        <div class="faq-body">
+                            <p>Tenemos clases presenciales de Yoga Suave, Hatha Yoga y Meditación, además de Yoga Oncológico, Yoga Niños, sesiones del Método LNT® y Reiki. De lunes a jueves en horarios de mañana y tarde. Puedes consultar la tabla detallada en la sección de <a href="#horarios">Horarios</a>.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>¿Cómo reservo una clase?</summary>
+                        <div class="faq-body">
+                            <p>Si eres alumno activo, accede directamente a través del botón Reservar del menú para gestionar tu plaza en el calendario. Si eres nuevo y quieres reservar una clase de prueba o pedir información, escríbenos un WhatsApp a coordinación y te atenderemos encantados.</p>
+                        </div>
+                    </details>
+                </div>
             </div>
         </section>
 
@@ -812,46 +1025,34 @@
     </a>
 
     <!-- MODAL DE RESERVAS -->
+    <!-- MODAL DE RESERVAS -->
     <div class="modal-overlay" id="calendario-modal">
-        <div class="modal-content" id="reservas-modal-content" style="max-width: 700px; padding: 40px 30px; text-align: center; border-radius: 12px; position: relative; height: auto; max-height: 90vh; overflow-y: auto; transition: all 0.3s ease;">
+        <div class="modal-content" id="reservas-modal-content" style="max-width: 700px; padding: 40px 30px; text-align: center; border-radius: var(--radius-lg); position: relative; height: auto; max-height: 90vh; overflow-y: auto; transition: all 0.3s ease;">
             <button class="modal-close" id="modal-close" style="cursor:pointer;" aria-label="Cerrar modal de reservas">&times;</button>
             
             <!-- Vista 1: Selector de Usuario (Por defecto) -->
             <div id="reservas-selector-view">
-                <div style="width: 70px; height: 70px; background: var(--bg-alt); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-                    <svg viewBox="0 0 24 24" width="36" height="36" fill="var(--contrast)"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+                <div class="modal-ic" style="width: 70px; height: 70px; background: var(--bg-alt); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: var(--plum);">
+                    <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
                 </div>
-                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--contrast); margin-bottom: 10px; font-weight: normal;">Agenda de Reservas</h3>
-                <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; color: #777; margin-bottom: 30px; max-width: 500px; margin-left: auto; margin-right: auto;">
-                    Bienvenido al sistema de reservas de Alaya Yoga. Por favor, selecciona tu opción para continuar.
+                <h3 style="font-family: var(--serif); font-size: 2.2rem; color: var(--plum); margin-bottom: 10px; font-weight: normal;">Reserva tu plaza</h3>
+                <p style="font-family: var(--sans); font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                    ¿Es tu primera vez o ya practicas con nosotros? Elige tu opción para continuar.
                 </p>
                 
-                <div class="modal-options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; text-align: center; margin-top: 20px;">
-                    <!-- Opción Alumnos Registrados -->
-                    <div style="background: var(--bg-alt); padding: 30px 20px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between;">
-                        <div>
-                            <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--contrast); margin-bottom: 10px; font-weight: 600;">Alumnos en Activo</h4>
-                            <p style="font-size: 0.9rem; color: #444; line-height: 1.6; margin-bottom: 20px;">
-                                Si ya eres alumno activo y tienes tu cuenta activada, accede directamente al calendario para reservar tu clase.
-                            </p>
-                        </div>
-                        <button id="btn-entrar-calendario" class="cta-button" style="border: none; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
-                            Entrar al Calendario
-                        </button>
-                    </div>
-                    
-                    <!-- Opción Nuevos Clientes -->
-                    <div style="background: var(--bg-alt); padding: 30px 20px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between;">
-                        <div>
-                            <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--contrast); margin-bottom: 10px; font-weight: 600;">Nuevos Alumnos / Info</h4>
-                            <p style="font-size: 0.9rem; color: #444; line-height: 1.6; margin-bottom: 20px;">
-                                Si deseas asistir a una clase de prueba o solicitar información, por favor selecciona a tu profesor/a para contactar directamente.
+                <div class="choice-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; text-align: center; margin-top: 20px;">
+                    <!-- Opción Nuevos Clientes (PRIMERA Y DESTACADA) -->
+                    <div class="choice choice--highlight" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <span class="choice-badge">Empieza aquí</span>
+                        <div style="text-align: left; margin-bottom: 1.5rem;">
+                            <h4 style="font-family: var(--serif); font-size: 1.4rem; color: var(--plum-deep); margin-bottom: 10px; font-weight: 600;">Soy nuevo · Clase de prueba</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
+                                Reserva tu clase de prueba (90 min, 15€) o solicita información de contacto. Elige el profesor o clase:
                             </p>
                         </div>
                         <div style="display: flex; flex-direction: column; gap: 12px; width: 100%; align-items: stretch; margin-top: auto;">
-                            <label for="modal-docente-select" style="font-size: 0.8rem; text-align: left; color: #333; font-weight: 500; font-family: 'Montserrat', sans-serif;">¿Qué clase te interesa?</label>
-                            <select id="modal-docente-select" name="modal-docente-select" style="padding: 10px; border-radius: 6px; border: 1px solid rgba(0,0,0,0.15); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; background: white; color: #333; cursor: pointer; width: 100%;">
+                            <label for="modal-docente-select" style="font-size: 0.8rem; text-align: left; color: var(--text); font-weight: 600; font-family: var(--sans);">¿Qué clase te interesa?</label>
+                            <select id="modal-docente-select" name="modal-docente-select" style="padding: 10px; border-radius: 6px; border: 1px solid rgba(43, 38, 48, 0.15); font-family: var(--sans); font-size: 0.85rem; background: white; color: var(--text); cursor: pointer; width: 100%;">
                                 <option value="" disabled selected>-- Selecciona clase o profesor/a --</option>
                                 <option value="pedro" data-phone="34639457793" data-name="Pedro" data-class="Meditación, LNT® o Crecimiento Personal">Meditación, LNT o Crecimiento (Pedro)</option>
                                 <option value="mauri" data-phone="34678653555" data-name="Mauri" data-class="Alegría pal Alma">Alegría pal Alma (Mauri)</option>
@@ -862,11 +1063,25 @@
                                 <option value="laurareiki" data-phone="34646581781" data-name="Laura" data-class="Reiki o Péndulo Hebreo">Reiki y Péndulo Hebreo (Laura)</option>
                             </select>
                             
-                            <a id="btn-whatsapp-docente" href="#reserva" target="_blank" class="cta-button disabled-button" aria-label="Contactar por WhatsApp" style="text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px; border:none; cursor:not-allowed; transition: all 0.3s ease;">
+                            <a id="btn-whatsapp-docente" href="#reserva" target="_blank" class="cta-button disabled-button" aria-label="Contactar por WhatsApp" style="text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px; border:none; cursor:not-allowed; transition: all 0.3s ease; border-radius: 50px;">
                                 <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.668.149-.198.297-.767.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                                 <span id="text-whatsapp-docente">Selecciona una opción</span>
                             </a>
                         </div>
+                    </div>
+
+                    <!-- Opción Alumnos Registrados -->
+                    <div class="choice" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div style="text-align: left; margin-bottom: 1.5rem;">
+                            <h4 style="font-family: var(--serif); font-size: 1.4rem; color: var(--plum-deep); margin-bottom: 10px; font-weight: 600;">Ya soy alumno</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
+                                Si ya eres socio o alumno activo con tu cuenta activada, accede directamente al calendario para reservar tu clase.
+                            </p>
+                        </div>
+                        <button id="btn-entrar-calendario" class="cta-button" style="border: none; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 50px; margin-top: auto;">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+                            Entrar al Calendario
+                        </button>
                     </div>
                 </div>
             </div>
@@ -874,11 +1089,11 @@
             <!-- Vista 2: Calendario (Oculta por defecto) -->
             <div id="reservas-calendar-view" style="display: none; width: 100%; height: 100%;">
                 <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 1px solid var(--bg-alt); margin-bottom: 15px;">
-                    <button id="btn-volver-selector" style="background: transparent; border: none; color: var(--contrast); font-weight: 600; display: flex; align-items: center; gap: 5px; font-size: 1rem; cursor: pointer;">
+                    <button id="btn-volver-selector" style="background: transparent; border: none; color: var(--plum); font-weight: 600; display: flex; align-items: center; gap: 5px; font-size: 1rem; cursor: pointer;">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="transform: rotate(180deg);"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L20.14 12l-7.29-7.29-1.42 1.42 5.43 5.43H5v2z"/></svg>
                         Volver
                     </button>
-                    <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--contrast);">Acceso Alumnos Registrados</span>
+                    <span style="font-family: var(--serif); font-size: 1.3rem; color: var(--plum);">Acceso Alumnos Registrados</span>
                 </div>
                 <iframe title="Calendario interactivo de reservas" src="https://yogaalaya.es/reservas/calendario.html" frameborder="0" id="calendar-iframe" style="width: 100%; height: calc(100% - 50px); border: none; border-radius: 8px;"></iframe>
             </div>

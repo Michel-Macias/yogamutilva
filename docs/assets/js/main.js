@@ -15,23 +15,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // 2. CURSOR ZEN (Solo Desktop > 1024px y sin reduced-motion)
+    // 2. CURSOR ZEN DECORATIVO (Solo Desktop > 1024px y sin reduced-motion, no oculta el cursor del sistema)
     if (window.innerWidth > 1024 && !prefersReducedMotion) {
         const cursor = document.createElement('div');
         cursor.id = 'custom-cursor';
         document.body.appendChild(cursor);
 
-        const cursorDot = document.createElement('div');
-        cursorDot.id = 'custom-cursor-dot';
-        document.body.appendChild(cursorDot);
+        let ax = 0, ay = 0, cx = 0, cy = 0, raf;
 
         document.addEventListener('mousemove', (e) => {
-            const { clientX: x, clientY: y } = e;
-            cursorDot.style.transform = `translate(${x}px, ${y}px)`;
-            cursor.animate({
-                transform: `translate(${x}px, ${y}px)`
-            }, { duration: 500, fill: 'forwards' });
+            ax = e.clientX;
+            ay = e.clientY;
+            cursor.style.opacity = '0.75';
+            if (!raf) {
+                loop();
+            }
         });
+
+        document.addEventListener('mouseleave', () => {
+            cursor.style.opacity = '0';
+        });
+
+        function loop() {
+            // Suavizado por interpolación lineal (lerp)
+            cx += (ax - cx) * 0.18;
+            cy += (ay - cy) * 0.18;
+            cursor.style.transform = `translate(${cx}px, ${cy}px)`;
+            
+            raf = (Math.abs(ax - cx) > 0.4 || Math.abs(ay - cy) > 0.4)
+                ? requestAnimationFrame(loop)
+                : null;
+        }
 
         const interactiveElements = document.querySelectorAll('a, button, .team-card, .card');
         interactiveElements.forEach(el => {
