@@ -215,6 +215,7 @@ nav {
     transform: translateY(-20px);
     transition: all 0.3s ease;
     border: 1px solid rgba(244, 164, 96, 0.3);
+    pointer-events: auto;
     list-style: none;
     text-align: center;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
