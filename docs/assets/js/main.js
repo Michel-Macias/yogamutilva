@@ -256,6 +256,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const name = selectedOption.getAttribute('data-name');
                 const className = selectedOption.getAttribute('data-class');
                 
+                if (selectedOption.value === 'elisa' || !phone) {
+                    waDocenteBtn.href = 'javascript:void(0)';
+                    waDocenteBtn.classList.add('disabled-button');
+                    waDocenteBtn.style.cursor = 'not-allowed';
+                    waDocenteBtn.style.pointerEvents = 'none';
+                    waDocenteBtn.style.opacity = '0.5';
+                    waDocenteBtn.style.background = '#888';
+                    waDocenteText.textContent = 'Próximamente: contacto no disponible todavía';
+                    return;
+                }
+                
                 // Mensaje personalizado
                 const text = encodeURIComponent(`¡Hola ${name}! Me gustaría obtener información sobre tu clase o sesión de ${className} y sobre cómo reservar.`);
                 
