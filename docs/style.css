@@ -2491,16 +2491,6 @@ footer {
     .sched-table td > .slot + .slot {
         margin-top: 0.5rem;
     }
-    .sched-table td:has(> .slot + .slot) {
-        display: block;
-        min-height: auto;
-    }
-    .sched-table td:has(> .slot + .slot) > .slot {
-        position: static;
-        float: none;
-        width: auto;
-        margin-left: 0;
-    }
 }
 
 /* --- Tarifas (Trial CTA y Badge) --- */
