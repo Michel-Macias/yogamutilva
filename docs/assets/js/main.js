@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const name = selectedOption.getAttribute('data-name');
                 const className = selectedOption.getAttribute('data-class');
                 
-                if (selectedOption.value === 'elisa' || !phone) {
+                if (!phone) {
                     waDocenteBtn.href = 'javascript:void(0)';
                     waDocenteBtn.classList.add('disabled-button');
                     waDocenteBtn.style.cursor = 'not-allowed';
