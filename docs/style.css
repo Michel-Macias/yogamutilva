@@ -2458,7 +2458,7 @@ footer {
 }
 .slot {
     border-radius: 12px;
-    padding: 0.8rem 0.9rem;
+    padding: 0.5rem 0.9rem;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -2486,7 +2486,6 @@ footer {
 @media (max-width: 768px) {
     .sched-table td {
         height: auto;
-        min-height: 72px;
     }
     .sched-table td > .slot + .slot {
         margin-top: 0.5rem;
